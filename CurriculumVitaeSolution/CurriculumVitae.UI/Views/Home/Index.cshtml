@@ -1,5 +1,681 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
+    ViewData["Title"] = "Thiago Wurster Balbinot - Home";
 }
+
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <title>@ViewData["Title"]</title>
+
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            html {
+                scroll-behavior: smooth;
+            }
+
+            body {
+                font-family: Arial, Helvetica, sans-serif;
+                background: #f5f5f5;
+                color: #222;
+                line-height: 1.6;
+            }
+
+            a {
+                color: inherit;
+                text-decoration: none;
+            }
+
+            header {
+                position: fixed;
+                top: 0;
+                width: 100%;
+                background: #ffffff;
+                border-bottom: 1px solid #e5e5e5;
+                z-index: 1000;
+            }
+
+            nav {
+                max-width: 1100px;
+                margin: 0 auto;
+                height: 70px;
+
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                padding: 0 20px;
+            }
+
+            .logo {
+                font-size: 22px;
+                font-weight: bold;
+            }
+
+            .nav-links {
+                display: flex;
+                gap: 30px;
+                list-style: none;
+            }
+
+            .nav-links a {
+                font-size: 14px;
+                color: #555;
+                transition: 0.2s;
+            }
+
+            .nav-links a:hover {
+                color: #000;
+            }
+
+            .hero {
+                min-height: 100vh;
+                max-width: 1100px;
+                margin: 0 auto;
+
+                display: flex;
+                align-items: center;
+
+                padding: 100px 20px 60px;
+            }
+
+            .hero-content {
+                max-width: 750px;
+            }
+
+            .hero-subtitle {
+                font-size: 16px;
+                color: #666;
+                margin-bottom: 10px;
+            }
+
+            .hero h1 {
+                font-size: clamp(42px, 7vw, 76px);
+                line-height: 1.05;
+                margin-bottom: 20px;
+            }
+
+            .hero-description {
+                font-size: 18px;
+                color: #555;
+                max-width: 650px;
+                margin-bottom: 30px;
+            }
+
+            .buttons {
+                display: flex;
+                gap: 15px;
+                flex-wrap: wrap;
+            }
+
+            .button {
+                display: inline-block;
+                padding: 12px 22px;
+                border: 1px solid #222;
+                border-radius: 6px;
+                font-size: 14px;
+                transition: 0.2s;
+            }
+
+            .button.primary {
+                background: #222;
+                color: white;
+            }
+
+            .button:hover {
+                transform: translateY(-2px);
+            }
+
+            section {
+                max-width: 1100px;
+                margin: 0 auto;
+                padding: 100px 20px;
+            }
+
+            .section-title {
+                font-size: 32px;
+                margin-bottom: 50px;
+            }
+
+            .about {
+                background: white;
+            }
+
+            .about-content {
+                max-width: 750px;
+            }
+
+            .about-content p {
+                color: #555;
+                margin-bottom: 15px;
+            }
+
+            .timeline {
+                display: flex;
+                flex-direction: column;
+                gap: 35px;
+            }
+
+            .experience {
+                display: grid;
+                grid-template-columns: 180px 1fr;
+                gap: 30px;
+
+                padding-bottom: 30px;
+                border-bottom: 1px solid #ddd;
+            }
+
+            .experience-date {
+                color: #777;
+                font-size: 14px;
+            }
+
+            .experience h3 {
+                font-size: 20px;
+                margin-bottom: 5px;
+            }
+
+            .experience-company {
+                color: #666;
+                margin-bottom: 12px;
+            }
+
+            .experience-description {
+                color: #555;
+            }
+
+            .projects-grid {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 25px;
+            }
+
+            .project {
+                background: white;
+                border: 1px solid #e5e5e5;
+                border-radius: 8px;
+                padding: 30px;
+
+                transition: 0.2s;
+            }
+
+            .project:hover {
+                transform: translateY(-4px);
+                border-color: #bbb;
+            }
+
+            .project h3 {
+                font-size: 20px;
+                margin-bottom: 10px;
+            }
+
+            .project p {
+                color: #666;
+                margin-bottom: 20px;
+            }
+
+            .project-link {
+                font-size: 14px;
+                font-weight: bold;
+            }
+
+            .certifications {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .certification {
+                background: white;
+                padding: 25px;
+                border: 1px solid #e5e5e5;
+                border-radius: 8px;
+            }
+
+            .certification h3 {
+                margin-bottom: 5px;
+            }
+
+            .certification p {
+                color: #666;
+            }
+
+            .contact {
+                text-align: center;
+            }
+
+            .contact p {
+                color: #666;
+                margin-bottom: 25px;
+            }
+
+            .contact-links {
+                display: flex;
+                justify-content: center;
+                gap: 25px;
+                flex-wrap: wrap;
+            }
+
+            footer {
+                border-top: 1px solid #ddd;
+                padding: 30px 20px;
+                text-align: center;
+                color: #777;
+                font-size: 14px;
+            }
+
+            @@media (max-width: 700px) {
+
+                .nav-links {
+                    display: none;
+                }
+
+                .hero {
+                    min-height: 80vh;
+                }
+
+                .experience {
+                    grid-template-columns: 1fr;
+                    gap: 5px;
+                }
+
+                .projects-grid {
+                    grid-template-columns: 1fr;
+                }
+
+                section {
+                    padding: 70px 20px;
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <!-- =========================
+             NAVBAR
+        ========================== -->
+
+        <header>
+            <nav>
+
+                <a href="#home" class="logo">
+                    Seu Nome
+                </a>
+
+                <ul class="nav-links">
+                    <li>
+                        <a href="#about">Sobre</a>
+                    </li>
+
+                    <li>
+                        <a href="#experience">Experiência</a>
+                    </li>
+
+                    <li>
+                        <a href="#projects">Projetos</a>
+                    </li>
+
+                    <li>
+                        <a href="#certifications">Certificações</a>
+                    </li>
+
+                    <li>
+                        <a href="#contact">Contato</a>
+                    </li>
+                </ul>
+
+            </nav>
+        </header>
+
+
+        <!-- =========================
+             HERO
+        ========================== -->
+
+        <main id="home">
+
+            <section class="hero">
+
+                <div class="hero-content">
+
+                    <p class="hero-subtitle">
+                        Desenvolvedor de Software
+                    </p>
+
+                    <h1>
+                        Olá, eu sou<br />
+                        Seu Nome.
+                    </h1>
+
+                    <p class="hero-description">
+                        Desenvolvedor focado em criar aplicações web,
+                        APIs e soluções utilizando .NET, C# e tecnologias
+                        modernas de desenvolvimento.
+                    </p>
+
+                    <div class="buttons">
+
+                        <a href="#projects" class="button primary">
+                            Ver projetos
+                        </a>
+
+                        <a href="#contact" class="button">
+                            Entre em contato
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 SOBRE
+            ========================== -->
+
+            <section id="about">
+
+                <h2 class="section-title">
+                    Sobre mim
+                </h2>
+
+                <div class="about-content">
+
+                    <p>
+                        Sou desenvolvedor de software interessado em
+                        arquitetura de sistemas, desenvolvimento web e
+                        criação de soluções eficientes e escaláveis.
+                    </p>
+
+                    <p>
+                        Tenho experiência com desenvolvimento utilizando
+                        C#, .NET, ASP.NET Core, SQL Server e outras
+                        tecnologias do ecossistema Microsoft.
+                    </p>
+
+                    <p>
+                        Atualmente busco evoluir constantemente minhas
+                        habilidades técnicas e transformar conhecimento
+                        em projetos reais.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 EXPERIÊNCIA
+            ========================== -->
+
+            <section id="experience">
+
+                <h2 class="section-title">
+                    Experiência
+                </h2>
+
+                <div class="timeline">
+
+                    <article class="experience">
+
+                        <div class="experience-date">
+                            2024 — Atual
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                Desenvolvedor .NET
+                            </h3>
+
+                            <p class="experience-company">
+                                Empresa
+                            </p>
+
+                            <p class="experience-description">
+                                Desenvolvimento e manutenção de aplicações
+                                web utilizando C#, .NET, APIs REST e SQL Server.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="experience">
+
+                        <div class="experience-date">
+                            2022 — 2024
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                Desenvolvedor de Software
+                            </h3>
+
+                            <p class="experience-company">
+                                Empresa anterior
+                            </p>
+
+                            <p class="experience-description">
+                                Desenvolvimento de sistemas e participação
+                                em projetos utilizando tecnologias modernas.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 PROJETOS
+            ========================== -->
+
+            <section id="projects">
+
+                <h2 class="section-title">
+                    Projetos
+                </h2>
+
+                <div class="projects-grid">
+
+                    <article class="project">
+
+                        <h3>
+                            Curriculum Vitae
+                        </h3>
+
+                        <p>
+                            Portfolio desenvolvido com ASP.NET Core,
+                            Clean Architecture, Dapper e SQL Server.
+                        </p>
+
+                        <a href="#" class="project-link">
+                            Ver projeto →
+                        </a>
+
+                    </article>
+
+
+                    <article class="project">
+
+                        <h3>
+                            Projeto 2
+                        </h3>
+
+                        <p>
+                            Descrição do projeto, tecnologias utilizadas
+                            e principais funcionalidades.
+                        </p>
+
+                        <a href="#" class="project-link">
+                            Ver projeto →
+                        </a>
+
+                    </article>
+
+
+                    <article class="project">
+
+                        <h3>
+                            Projeto 3
+                        </h3>
+
+                        <p>
+                            Descrição do projeto, tecnologias utilizadas
+                            e principais funcionalidades.
+                        </p>
+
+                        <a href="#" class="project-link">
+                            Ver projeto →
+                        </a>
+
+                    </article>
+
+
+                    <article class="project">
+
+                        <h3>
+                            Projeto 4
+                        </h3>
+
+                        <p>
+                            Descrição do projeto, tecnologias utilizadas
+                            e principais funcionalidades.
+                        </p>
+
+                        <a href="#" class="project-link">
+                            Ver projeto →
+                        </a>
+
+                    </article>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 CERTIFICAÇÕES
+            ========================== -->
+
+            <section id="certifications">
+
+                <h2 class="section-title">
+                    Certificações
+                </h2>
+
+                <div class="certifications">
+
+                    <article class="certification">
+
+                        <h3>
+                            Certificação .NET
+                        </h3>
+
+                        <p>
+                            Instituição • 40 horas
+                        </p>
+
+                    </article>
+
+
+                    <article class="certification">
+
+                        <h3>
+                            Certificação C#
+                        </h3>
+
+                        <p>
+                            Instituição • 30 horas
+                        </p>
+
+                    </article>
+
+
+                    <article class="certification">
+
+                        <h3>
+                            Certificação SQL
+                        </h3>
+
+                        <p>
+                            Instituição • 20 horas
+                        </p>
+
+                    </article>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 CONTATO
+            ========================== -->
+
+            <section id="contact" class="contact">
+
+                <h2 class="section-title">
+                    Vamos conversar?
+                </h2>
+
+                <p>
+                    Estou aberto a oportunidades, projetos e conexões
+                    profissionais.
+                </p>
+
+                <div class="contact-links">
+
+                    <a href="mailto:seuemail@email.com"
+                       class="button primary">
+                        Email
+                    </a>
+
+                    <a href="#"
+                       class="button">
+                        LinkedIn
+                    </a>
+
+                    <a href="#"
+                       class="button">
+                        GitHub
+                    </a>
+
+                </div>
+
+            </section>
+
+        </main>
+
+
+        <!-- =========================
+             FOOTER
+        ========================== -->
+
+        <footer>
+
+            <p>
+                © @DateTime.Now.Year Thiago Wurster Balbinot. Todos os direitos reservados.
+            </p>
+
+        </footer>
+
+    </body>
+</html>
