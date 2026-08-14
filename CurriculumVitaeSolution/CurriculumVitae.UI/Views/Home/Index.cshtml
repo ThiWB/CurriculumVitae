@@ -1,681 +1,1260 @@
 ﻿@{
-    ViewData["Title"] = "Thiago Wurster Balbinot - Home";
+    ViewData["Title"] = "Thiago Wurster Balbinot - Full-Stack Developer";
 }
 
 <!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
 
-<html lang="pt-BR">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
 
-        <title>@ViewData["Title"]</title>
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
 
-        <style>
-            * {
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+
+                    fontFamily: {
+                        sans: ['Inter', 'ui-sans-serif', 'system-ui'],
+                        mono: ['JetBrains Mono', 'monospace']
+                    },
+
+                    colors: {
+                        blood: {
+                            400: '#fb4b4b',
+                            500: '#ef233c',
+                            600: '#d90429',
+                            700: '#b00020',
+                            800: '#7f0018',
+                            900: '#45000d'
+                        }
+                    },
+
+                    boxShadow: {
+                        'red-glow': '0 0 45px rgba(239,35,60,.18)',
+                        'red-strong': '0 0 80px rgba(239,35,60,.25)'
+                    },
+
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-red': 'pulseRed 3s ease-in-out infinite',
+                        'scan': 'scan 5s linear infinite',
+                        'blink': 'blink 1s step-end infinite'
+                    },
+
+                    keyframes: {
+
+                        float: {
+                            '0%, 100%': {
+                                transform: 'translateY(0px)'
+                            },
+                            '50%': {
+                                transform: 'translateY(-12px)'
+                            }
+                        },
+
+                        pulseRed: {
+                            '0%, 100%': {
+                                opacity: '.35',
+                                transform: 'scale(1)'
+                            },
+                            '50%': {
+                                opacity: '.65',
+                                transform: 'scale(1.08)'
+                            }
+                        },
+
+                        scan: {
+                            '0%': {
+                                transform: 'translateY(-100%)'
+                            },
+                            '100%': {
+                                transform: 'translateY(100%)'
+                            }
+                        },
+
+                        blink: {
+                            '0%, 50%': {
+                                opacity: '1'
+                            },
+                            '51%, 100%': {
+                                opacity: '0'
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap"
+          rel="stylesheet">
+
+    <style>
+
+        /* =========================================================
+                   BASE
+                ========================================================= */
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: radial-gradient( circle at 15% 10%, rgba(239, 35, 60, .12), transparent 28% ), radial-gradient( circle at 85% 20%, rgba(127, 0, 24, .14), transparent 30% ), radial-gradient( circle at 50% 100%, rgba(239, 35, 60, .06), transparent 35% ), #050506;
+            color: #e5e7eb;
+        }
+
+        ::selection {
+            background: rgba(239, 35, 60, .35);
+            color: white;
+        }
+
+        /* =========================================================
+                   GRID
+                ========================================================= */
+
+        .grid-background {
+            background-image: linear-gradient( rgba(255,255,255,.025) 1px, transparent 1px ), linear-gradient( 90deg, rgba(255,255,255,.025) 1px, transparent 1px );
+            background-size: 45px 45px;
+        }
+
+        /* =========================================================
+                   TEXT
+                ========================================================= */
+
+        .text-gradient {
+            background: linear-gradient( 90deg, #ffffff 0%, #fb4b4b 45%, #d90429 100% );
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .text-gradient-red {
+            background: linear-gradient( 90deg, #fb4b4b, #d90429 );
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* =========================================================
+                   GLASS
+                ========================================================= */
+
+        .glass {
+            background: rgba(10, 10, 12, .72);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,.07);
+        }
+
+        /* =========================================================
+                   RED GLOW
+                ========================================================= */
+
+        .red-glow {
+            box-shadow: 0 0 40px rgba(239,35,60,.12), inset 0 0 30px rgba(239,35,60,.025);
+        }
+
+        .red-line {
+            background: linear-gradient( 90deg, transparent, #ef233c, transparent );
+        }
+
+        /* =========================================================
+                   HERO IMAGE
+                ========================================================= */
+
+        .profile-frame {
+            position: relative;
+        }
+
+            .profile-frame::before {
+                content: "";
+                position: absolute;
+                inset: -1px;
+                background: linear-gradient( 135deg, rgba(239,35,60,.8), transparent 35%, transparent 65%, rgba(127,0,24,.7) );
+                border-radius: 1.5rem;
+                z-index: -1;
+                filter: blur(1px);
             }
 
-            html {
-                scroll-behavior: smooth;
+            .profile-frame::after {
+                content: "";
+                position: absolute;
+                inset: 0;
+                background: linear-gradient( 180deg, transparent 55%, rgba(239,35,60,.12) );
+                pointer-events: none;
+                border-radius: 1.5rem;
             }
 
-            body {
-                font-family: Arial, Helvetica, sans-serif;
-                background: #f5f5f5;
-                color: #222;
-                line-height: 1.6;
-            }
+        /* =========================================================
+                   TERMINAL
+                ========================================================= */
 
-            a {
-                color: inherit;
-                text-decoration: none;
-            }
+        .terminal {
+            background: #08090c;
+            border: 1px solid rgba(239,35,60,.18);
+            box-shadow: 0 25px 80px rgba(0,0,0,.55), 0 0 60px rgba(239,35,60,.08);
+        }
 
-            header {
-                position: fixed;
+        .terminal-line::before {
+            content: ">";
+            color: #ef233c;
+            margin-right: .65rem;
+        }
+
+        /* =========================================================
+                   CARD
+                ========================================================= */
+
+        .project-card {
+            position: relative;
+            overflow: hidden;
+        }
+
+            .project-card::before {
+                content: "";
+                position: absolute;
                 top: 0;
+                left: -100%;
                 width: 100%;
-                background: #ffffff;
-                border-bottom: 1px solid #e5e5e5;
-                z-index: 1000;
+                height: 1px;
+                background: linear-gradient( 90deg, transparent, #ef233c, transparent );
+                transition: .6s;
             }
 
-            nav {
-                max-width: 1100px;
-                margin: 0 auto;
-                height: 70px;
-
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-
-                padding: 0 20px;
+            .project-card:hover::before {
+                left: 100%;
             }
 
-            .logo {
-                font-size: 22px;
-                font-weight: bold;
+        /* =========================================================
+                   SCROLLBAR
+                ========================================================= */
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #050506;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #3b0b11;
+            border-radius: 999px;
+        }
+
+            ::-webkit-scrollbar-thumb:hover {
+                background: #d90429;
             }
 
-            .nav-links {
-                display: flex;
-                gap: 30px;
-                list-style: none;
-            }
+    </style>
+</head>
 
-            .nav-links a {
-                font-size: 14px;
-                color: #555;
-                transition: 0.2s;
-            }
 
-            .nav-links a:hover {
-                color: #000;
-            }
+<body class="min-h-screen bg-[#050506] text-slate-200 antialiased">
 
-            .hero {
-                min-height: 100vh;
-                max-width: 1100px;
-                margin: 0 auto;
 
-                display: flex;
-                align-items: center;
+    <!-- =========================================================
+         NAVBAR
+    ========================================================= -->
 
-                padding: 100px 20px 60px;
-            }
+    <header class="fixed inset-x-0 top-0 z-50">
 
-            .hero-content {
-                max-width: 750px;
-            }
+        <div class="mx-auto max-w-7xl px-4 pt-4 sm:px-6 lg:px-8">
 
-            .hero-subtitle {
-                font-size: 16px;
-                color: #666;
-                margin-bottom: 10px;
-            }
+            <nav class="glass red-glow rounded-2xl px-5 py-3">
 
-            .hero h1 {
-                font-size: clamp(42px, 7vw, 76px);
-                line-height: 1.05;
-                margin-bottom: 20px;
-            }
+                <div class="flex items-center justify-between">
 
-            .hero-description {
-                font-size: 18px;
-                color: #555;
-                max-width: 650px;
-                margin-bottom: 30px;
-            }
+                    <a href="#home"
+                       class="font-mono text-sm font-semibold tracking-tight text-white">
 
-            .buttons {
-                display: flex;
-                gap: 15px;
-                flex-wrap: wrap;
-            }
+                        <span class="text-red-500">&lt;</span>
 
-            .button {
-                display: inline-block;
-                padding: 12px 22px;
-                border: 1px solid #222;
-                border-radius: 6px;
-                font-size: 14px;
-                transition: 0.2s;
-            }
+                        Thiago
 
-            .button.primary {
-                background: #222;
-                color: white;
-            }
+                        <span class="text-red-500">/&gt;</span>
 
-            .button:hover {
-                transform: translateY(-2px);
-            }
+                    </a>
 
-            section {
-                max-width: 1100px;
-                margin: 0 auto;
-                padding: 100px 20px;
-            }
 
-            .section-title {
-                font-size: 32px;
-                margin-bottom: 50px;
-            }
+                    <div class="hidden items-center gap-8 md:flex">
 
-            .about {
-                background: white;
-            }
+                        <a href="#about"
+                           class="text-sm text-slate-500 transition hover:text-red-400">
+                            About
+                        </a>
 
-            .about-content {
-                max-width: 750px;
-            }
+                        <a href="#experience"
+                           class="text-sm text-slate-500 transition hover:text-red-400">
+                            Experience
+                        </a>
 
-            .about-content p {
-                color: #555;
-                margin-bottom: 15px;
-            }
+                        <a href="#projects"
+                           class="text-sm text-slate-500 transition hover:text-red-400">
+                            Projects
+                        </a>
 
-            .timeline {
-                display: flex;
-                flex-direction: column;
-                gap: 35px;
-            }
+                        <a href="#certifications"
+                           class="text-sm text-slate-500 transition hover:text-red-400">
+                            Certifications
+                        </a>
 
-            .experience {
-                display: grid;
-                grid-template-columns: 180px 1fr;
-                gap: 30px;
+                    </div>
 
-                padding-bottom: 30px;
-                border-bottom: 1px solid #ddd;
-            }
 
-            .experience-date {
-                color: #777;
-                font-size: 14px;
-            }
+                    <a href="#contact"
+                       class="group rounded-xl border border-red-500/30 bg-red-500/10 px-4 py-2 text-sm font-medium text-red-400 transition hover:border-red-400/60 hover:bg-red-500/20 hover:text-red-300">
 
-            .experience h3 {
-                font-size: 20px;
-                margin-bottom: 5px;
-            }
+                        Let's talk
 
-            .experience-company {
-                color: #666;
-                margin-bottom: 12px;
-            }
+                        <span class="ml-1 transition group-hover:ml-2">
+                            →
+                        </span>
 
-            .experience-description {
-                color: #555;
-            }
+                    </a>
 
-            .projects-grid {
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
-                gap: 25px;
-            }
-
-            .project {
-                background: white;
-                border: 1px solid #e5e5e5;
-                border-radius: 8px;
-                padding: 30px;
-
-                transition: 0.2s;
-            }
-
-            .project:hover {
-                transform: translateY(-4px);
-                border-color: #bbb;
-            }
-
-            .project h3 {
-                font-size: 20px;
-                margin-bottom: 10px;
-            }
-
-            .project p {
-                color: #666;
-                margin-bottom: 20px;
-            }
-
-            .project-link {
-                font-size: 14px;
-                font-weight: bold;
-            }
-
-            .certifications {
-                display: flex;
-                flex-direction: column;
-                gap: 20px;
-            }
-
-            .certification {
-                background: white;
-                padding: 25px;
-                border: 1px solid #e5e5e5;
-                border-radius: 8px;
-            }
-
-            .certification h3 {
-                margin-bottom: 5px;
-            }
-
-            .certification p {
-                color: #666;
-            }
-
-            .contact {
-                text-align: center;
-            }
-
-            .contact p {
-                color: #666;
-                margin-bottom: 25px;
-            }
-
-            .contact-links {
-                display: flex;
-                justify-content: center;
-                gap: 25px;
-                flex-wrap: wrap;
-            }
-
-            footer {
-                border-top: 1px solid #ddd;
-                padding: 30px 20px;
-                text-align: center;
-                color: #777;
-                font-size: 14px;
-            }
-
-            @@media (max-width: 700px) {
-
-                .nav-links {
-                    display: none;
-                }
-
-                .hero {
-                    min-height: 80vh;
-                }
-
-                .experience {
-                    grid-template-columns: 1fr;
-                    gap: 5px;
-                }
-
-                .projects-grid {
-                    grid-template-columns: 1fr;
-                }
-
-                section {
-                    padding: 70px 20px;
-                }
-            }
-        </style>
-    </head>
-
-    <body>
-
-        <!-- =========================
-             NAVBAR
-        ========================== -->
-
-        <header>
-            <nav>
-
-                <a href="#home" class="logo">
-                    Seu Nome
-                </a>
-
-                <ul class="nav-links">
-                    <li>
-                        <a href="#about">Sobre</a>
-                    </li>
-
-                    <li>
-                        <a href="#experience">Experiência</a>
-                    </li>
-
-                    <li>
-                        <a href="#projects">Projetos</a>
-                    </li>
-
-                    <li>
-                        <a href="#certifications">Certificações</a>
-                    </li>
-
-                    <li>
-                        <a href="#contact">Contato</a>
-                    </li>
-                </ul>
+                </div>
 
             </nav>
-        </header>
+
+        </div>
+
+    </header>
 
 
-        <!-- =========================
+    <main id="home">
+
+
+        <!-- =====================================================
              HERO
-        ========================== -->
+        ====================================================== -->
 
-        <main id="home">
+        <section class="relative min-h-screen overflow-hidden">
 
-            <section class="hero">
+            <div class="grid-background absolute inset-0 -z-20 opacity-60"></div>
 
-                <div class="hero-content">
 
-                    <p class="hero-subtitle">
-                        Desenvolvedor de Software
-                    </p>
+            <div class="absolute left-1/2 top-20 -z-10 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-red-700/10 blur-[130px] animate-pulse-red"></div>
 
-                    <h1>
-                        Olá, eu sou<br />
-                        Seu Nome.
-                    </h1>
 
-                    <p class="hero-description">
-                        Desenvolvedor focado em criar aplicações web,
-                        APIs e soluções utilizando .NET, C# e tecnologias
-                        modernas de desenvolvimento.
-                    </p>
+            <div class="absolute -left-32 top-1/3 -z-10 h-72 w-72 rounded-full bg-red-900/10 blur-[100px]"></div>
 
-                    <div class="buttons">
 
-                        <a href="#projects" class="button primary">
-                            Ver projetos
-                        </a>
+            <div class="mx-auto flex min-h-screen max-w-7xl items-center px-4 pb-20 pt-36 sm:px-6 lg:px-8">
 
-                        <a href="#contact" class="button">
-                            Entre em contato
-                        </a>
+                <div class="grid w-full gap-20 lg:grid-cols-[1.25fr_.75fr] lg:items-center">
+
+
+                    <!-- HERO CONTENT -->
+
+                    <div>
+
+                        <div class="mb-6 flex items-center gap-3">
+
+                            <span class="h-px w-10 bg-red-500"></span>
+
+                            <p class="font-mono text-xs uppercase tracking-[.3em] text-red-400">
+                                Full-Stack Developer
+                            </p>
+
+                        </div>
+
+
+                        <h1 class="max-w-5xl text-5xl font-black leading-[.9] tracking-[-.04em] text-white sm:text-6xl lg:text-[6.5rem]">
+
+                            Hello
+
+                            <span class="text-slate-600">
+                                friend.
+                            </span>
+
+                            <br />
+
+                            <span class="text-slate-500">
+                                I'm
+                            </span>
+
+                            <br />
+
+                            <span class="text-gradient">
+                                Thiago.
+                            </span>
+
+                        </h1>
+
+
+                        <p class="mt-8 max-w-2xl text-lg leading-8 text-slate-500 sm:text-xl">
+
+                            Full-Stack Developer focused on
+
+                            <span class="font-medium text-slate-200">
+                                .NET, C#, Java, APIs and databases
+                            </span>
+
+                            with a strong background in
+
+                            <span class="font-medium text-red-400">
+                                infrastructure and virtualization.
+                            </span>
+
+                        </p>
+
+
+                        <!-- BUTTONS -->
+
+                        <div class="mt-10 flex flex-wrap gap-4">
+
+                            <a href="#projects"
+                               class="group inline-flex items-center gap-3 rounded-xl bg-red-600 px-6 py-3.5 font-semibold text-white shadow-lg shadow-red-900/20 transition hover:-translate-y-0.5 hover:bg-red-500">
+
+                                View my work
+
+                                <span class="transition group-hover:translate-x-1">
+                                    →
+                                </span>
+
+                            </a>
+
+
+                            <a href="#contact"
+                               class="inline-flex items-center gap-3 rounded-xl border border-slate-800 bg-black/30 px-6 py-3.5 font-semibold text-slate-200 transition hover:border-red-500/40 hover:bg-red-500/5">
+
+                                Contact me
+
+                            </a>
+
+                        </div>
+
+
+                        <!-- SOCIAL -->
+
+                        <div class="mt-12 flex flex-wrap items-center gap-5 font-mono text-xs">
+
+                            <a href="https://github.com/ThiWB"
+                               target="_blank"
+                               class="text-slate-600 transition hover:text-red-400">
+                                GitHub
+                            </a>
+
+                            <span class="text-slate-800">
+                                /
+                            </span>
+
+                            <a href="https://www.linkedin.com/in/thiago-wurster-balbinot-3b1932306/"
+                               target="_blank"
+                               class="text-slate-600 transition hover:text-red-400">
+                                LinkedIn
+                            </a>
+
+                            <span class="text-slate-800">
+                                /
+                            </span>
+
+                            <a href="mailto:thibalbinot@gmail.com"
+                               class="text-slate-600 transition hover:text-red-400">
+                                Email
+                            </a>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- PROFILE / TERMINAL -->
+
+                    <div class="hidden lg:block">
+
+                        <div class="animate-float">
+
+
+                            <div class="terminal rounded-3xl p-3">
+
+
+                                <!-- TERMINAL HEADER -->
+
+                                <div class="flex items-center justify-between border-b border-white/5 px-4 py-3">
+
+                                    <div class="flex gap-2">
+
+                                        <span class="h-2.5 w-2.5 rounded-full bg-red-500"></span>
+
+                                        <span class="h-2.5 w-2.5 rounded-full bg-slate-700"></span>
+
+                                        <span class="h-2.5 w-2.5 rounded-full bg-slate-700"></span>
+
+                                    </div>
+
+                                    <span class="font-mono text-[10px] text-slate-700">
+                                        thiago@dev ~
+                                    </span>
+
+                                </div>
+
+
+                                <!-- IMAGE -->
+
+                                <div class="profile-frame relative overflow-hidden rounded-2xl bg-black">
+
+                                    <img src="@Url.Content("~/images/thiago.png")"
+                                         alt="Thiago Wurster Balbinot"
+                                         class="relative z-10 w-full object-cover grayscale transition duration-700 hover:grayscale-0" />
+
+                                </div>
+
+
+                                <!-- TERMINAL INFO -->
+
+                                <div class="space-y-2 px-4 py-4 font-mono text-[11px]">
+
+                                    <p class="terminal-line text-slate-500">
+                                        whoami
+                                    </p>
+
+                                    <p class="pl-6 text-red-400">
+                                        Full-Stack Developer
+                                    </p>
+
+                                    <p class="terminal-line mt-3 text-slate-500">
+                                        stack
+                                    </p>
+
+                                    <p class="pl-6 text-slate-600">
+                                        C# · .NET · Java · PostgreSQL
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
 
                     </div>
 
                 </div>
 
-            </section>
+            </div>
 
 
-            <!-- =========================
-                 SOBRE
-            ========================== -->
+            <!-- SCROLL INDICATOR -->
 
-            <section id="about">
+            <div class="absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-3 md:flex">
 
-                <h2 class="section-title">
-                    Sobre mim
-                </h2>
+                <span class="font-mono text-[9px] uppercase tracking-[.4em] text-slate-700">
+                    Scroll
+                </span>
 
-                <div class="about-content">
+                <div class="h-10 w-px bg-gradient-to-b from-red-500 to-transparent"></div>
 
-                    <p>
-                        Sou desenvolvedor de software interessado em
-                        arquitetura de sistemas, desenvolvimento web e
-                        criação de soluções eficientes e escaláveis.
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             ABOUT
+        ====================================================== -->
+
+        <section id="about"
+                 class="border-y border-white/5 bg-[#080809]">
+
+            <div class="mx-auto max-w-7xl px-4 py-28 sm:px-6 lg:px-8">
+
+                <div class="grid gap-16 lg:grid-cols-[.65fr_1.35fr]">
+
+
+                    <div>
+
+                        <p class="mb-4 font-mono text-xs tracking-[.3em] text-red-500">
+                            01 / ABOUT
+                        </p>
+
+                        <h2 class="text-4xl font-black tracking-tight text-white sm:text-6xl">
+                            About
+                            <span class="text-red-500">
+                                me.
+                            </span>
+                        </h2>
+
+                    </div>
+
+
+                    <div>
+
+                        <p class="text-lg leading-8 text-slate-400">
+
+                            I am a software developer and infrastructure enthusiast
+                            based in Videira, Santa Catarina, Brazil.
+
+                            Currently pursuing my B.S. in Computer Science at
+                            <span class="text-white">
+                                UNOESC
+                            </span>,
+                            with expected graduation in 2027.
+
+                        </p>
+
+
+                        <p class="mt-6 text-lg leading-8 text-slate-400">
+
+                            My work combines software engineering with infrastructure,
+                            allowing me to understand systems from the application layer
+                            all the way down to the servers and virtualization platform.
+
+                        </p>
+
+
+                        <!-- SKILLS -->
+
+                        <div class="mt-12">
+
+                            <p class="mb-5 font-mono text-[10px] uppercase tracking-[.3em] text-slate-600">
+                                Technologies
+                            </p>
+
+
+                            <div class="flex flex-wrap gap-2">
+
+                                @foreach (var skill in new[]
+                                {
+                                "C#",
+                                ".NET",
+                                "ASP.NET Core",
+                                "Java",
+                                "REST",
+                                "SOAP",
+                                "PostgreSQL",
+                                "SQL Server",
+                                "Dapper",
+                                "Entity Framework",
+                                "JavaScript",
+                                "Tailwind CSS",
+                                "AWS",
+                                "VMware ESXi",
+                                "Hyper-V",
+                                "Linux",
+                                "Windows Server",
+                                "MikroTik",
+                                "Zabbix",
+                                "Grafana"
+                                })
+                                {
+                                    <span class="rounded-lg border border-white/5 bg-black/30 px-3 py-2 font-mono text-xs text-slate-500 transition hover:border-red-500/30 hover:bg-red-500/5 hover:text-red-400">
+                                        @skill
+                                    </span>
+                                }
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             EXPERIENCE
+        ====================================================== -->
+
+        <section id="experience">
+
+            <div class="mx-auto max-w-7xl px-4 py-28 sm:px-6 lg:px-8">
+
+
+                <div class="mb-16">
+
+                    <p class="mb-4 font-mono text-xs tracking-[.3em] text-red-500">
+                        02 / EXPERIENCE
                     </p>
 
-                    <p>
-                        Tenho experiência com desenvolvimento utilizando
-                        C#, .NET, ASP.NET Core, SQL Server e outras
-                        tecnologias do ecossistema Microsoft.
-                    </p>
-
-                    <p>
-                        Atualmente busco evoluir constantemente minhas
-                        habilidades técnicas e transformar conhecimento
-                        em projetos reais.
-                    </p>
+                    <h2 class="text-4xl font-black tracking-tight text-white sm:text-6xl">
+                        Where I've
+                        <span class="text-red-500">
+                            worked.
+                        </span>
+                    </h2>
 
                 </div>
 
-            </section>
+
+                <div class="relative ml-3 border-l border-red-950">
 
 
-            <!-- =========================
-                 EXPERIÊNCIA
-            ========================== -->
+                    <!-- EXPERIENCE 1 -->
 
-            <section id="experience">
+                    <article class="relative pb-16 pl-10">
 
-                <h2 class="section-title">
-                    Experiência
-                </h2>
-
-                <div class="timeline">
-
-                    <article class="experience">
-
-                        <div class="experience-date">
-                            2024 — Atual
-                        </div>
-
-                        <div>
-
-                            <h3>
-                                Desenvolvedor .NET
-                            </h3>
-
-                            <p class="experience-company">
-                                Empresa
-                            </p>
-
-                            <p class="experience-description">
-                                Desenvolvimento e manutenção de aplicações
-                                web utilizando C#, .NET, APIs REST e SQL Server.
-                            </p>
-
-                        </div>
-
-                    </article>
+                        <span class="absolute -left-[5px] top-1 h-2.5 w-2.5 rounded-full bg-red-500 ring-4 ring-[#050506] shadow-lg shadow-red-500/50"></span>
 
 
-                    <article class="experience">
+                        <div class="grid gap-5 lg:grid-cols-[220px_1fr]">
 
-                        <div class="experience-date">
-                            2022 — 2024
-                        </div>
+                            <div>
 
-                        <div>
+                                <p class="font-mono text-xs text-red-500">
+                                    MAR 2026 — PRESENT
+                                </p>
 
-                            <h3>
-                                Desenvolvedor de Software
-                            </h3>
+                            </div>
 
-                            <p class="experience-company">
-                                Empresa anterior
-                            </p>
 
-                            <p class="experience-description">
-                                Desenvolvimento de sistemas e participação
-                                em projetos utilizando tecnologias modernas.
-                            </p>
+                            <div>
+
+                                <h3 class="text-xl font-bold text-white">
+                                    Full-Stack .NET & Java Developer
+                                </h3>
+
+                                <p class="mt-1 text-sm text-red-400">
+                                    ATM - Soluções em Tecnologia
+                                </p>
+
+                                <p class="mt-5 max-w-3xl leading-7 text-slate-500">
+
+                                    Architect and develop web applications using
+                                    ASP.NET Core and Java backends. Design and integrate
+                                    RESTful and SOAP APIs, manage PostgreSQL and SQL Server
+                                    databases and develop automated platforms for virtual
+                                    machine provisioning and on-premise cloud management.
+
+                                </p>
+
+                            </div>
 
                         </div>
 
                     </article>
 
-                </div>
 
-            </section>
+                    <!-- EXPERIENCE 2 -->
 
+                    <article class="relative pb-16 pl-10">
 
-            <!-- =========================
-                 PROJETOS
-            ========================== -->
-
-            <section id="projects">
-
-                <h2 class="section-title">
-                    Projetos
-                </h2>
-
-                <div class="projects-grid">
-
-                    <article class="project">
-
-                        <h3>
-                            Curriculum Vitae
-                        </h3>
-
-                        <p>
-                            Portfolio desenvolvido com ASP.NET Core,
-                            Clean Architecture, Dapper e SQL Server.
-                        </p>
-
-                        <a href="#" class="project-link">
-                            Ver projeto →
-                        </a>
-
-                    </article>
+                        <span class="absolute -left-[5px] top-1 h-2.5 w-2.5 rounded-full bg-slate-800 ring-4 ring-[#050506]"></span>
 
 
-                    <article class="project">
+                        <div class="grid gap-5 lg:grid-cols-[220px_1fr]">
 
-                        <h3>
-                            Projeto 2
-                        </h3>
+                            <div>
 
-                        <p>
-                            Descrição do projeto, tecnologias utilizadas
-                            e principais funcionalidades.
-                        </p>
+                                <p class="font-mono text-xs text-slate-700">
+                                    OCT 2024 — MAR 2026
+                                </p>
 
-                        <a href="#" class="project-link">
-                            Ver projeto →
-                        </a>
+                            </div>
+
+
+                            <div>
+
+                                <h3 class="text-xl font-bold text-white">
+                                    IT & Infrastructure Support Analyst
+                                </h3>
+
+                                <p class="mt-1 text-sm text-slate-600">
+                                    ATM - Soluções em Tecnologia
+                                </p>
+
+                                <p class="mt-5 max-w-3xl leading-7 text-slate-500">
+
+                                    Administered Linux and Windows enterprise servers,
+                                    VMware ESXi virtualization environments, VPN tunnels
+                                    and MikroTik RouterOS networks. Implemented infrastructure
+                                    monitoring using Zabbix, Grafana and Observium.
+
+                                </p>
+
+                            </div>
+
+                        </div>
 
                     </article>
 
 
-                    <article class="project">
+                    <!-- EXPERIENCE 3 -->
 
-                        <h3>
-                            Projeto 3
-                        </h3>
+                    <article class="relative pb-16 pl-10">
 
-                        <p>
-                            Descrição do projeto, tecnologias utilizadas
-                            e principais funcionalidades.
-                        </p>
-
-                        <a href="#" class="project-link">
-                            Ver projeto →
-                        </a>
-
-                    </article>
+                        <span class="absolute -left-[5px] top-1 h-2.5 w-2.5 rounded-full bg-slate-800 ring-4 ring-[#050506]"></span>
 
 
-                    <article class="project">
+                        <div class="grid gap-5 lg:grid-cols-[220px_1fr]">
 
-                        <h3>
-                            Projeto 4
-                        </h3>
+                            <div>
 
-                        <p>
-                            Descrição do projeto, tecnologias utilizadas
-                            e principais funcionalidades.
-                        </p>
+                                <p class="font-mono text-xs text-slate-700">
+                                    MAY 2024 — SEP 2024
+                                </p>
 
-                        <a href="#" class="project-link">
-                            Ver projeto →
-                        </a>
-
-                    </article>
-
-                </div>
-
-            </section>
+                            </div>
 
 
-            <!-- =========================
-                 CERTIFICAÇÕES
-            ========================== -->
+                            <div>
 
-            <section id="certifications">
+                                <h3 class="text-xl font-bold text-white">
+                                    IT Support Intern
+                                </h3>
 
-                <h2 class="section-title">
-                    Certificações
-                </h2>
+                                <p class="mt-1 text-sm text-slate-600">
+                                    Videplast - Indústria de Embalagens Flexíveis
+                                </p>
 
-                <div class="certifications">
+                                <p class="mt-5 max-w-3xl leading-7 text-slate-500">
 
-                    <article class="certification">
+                                    Hardware troubleshooting, network point activation,
+                                    preventative maintenance, operating system upgrades
+                                    and localized technical support.
 
-                        <h3>
-                            Certificação .NET
-                        </h3>
+                                </p>
 
-                        <p>
-                            Instituição • 40 horas
-                        </p>
+                            </div>
+
+                        </div>
 
                     </article>
 
 
-                    <article class="certification">
+                    <!-- EXPERIENCE 4 -->
 
-                        <h3>
-                            Certificação C#
-                        </h3>
+                    <article class="relative pl-10">
 
-                        <p>
-                            Instituição • 30 horas
-                        </p>
-
-                    </article>
+                        <span class="absolute -left-[5px] top-1 h-2.5 w-2.5 rounded-full bg-slate-800 ring-4 ring-[#050506]"></span>
 
 
-                    <article class="certification">
+                        <div class="grid gap-5 lg:grid-cols-[220px_1fr]">
 
-                        <h3>
-                            Certificação SQL
-                        </h3>
+                            <div>
 
-                        <p>
-                            Instituição • 20 horas
-                        </p>
+                                <p class="font-mono text-xs text-slate-700">
+                                    JAN 2022 — DEC 2023
+                                </p>
+
+                            </div>
+
+
+                            <div>
+
+                                <h3 class="text-xl font-bold text-white">
+                                    Administrative Assistant Intern
+                                </h3>
+
+                                <p class="mt-1 text-sm text-slate-600">
+                                    Giba Sul Representações
+                                </p>
+
+                                <p class="mt-5 max-w-3xl leading-7 text-slate-500">
+
+                                    Managed corporate communication, customer databases,
+                                    spreadsheet population and order processing workflows.
+
+                                </p>
+
+                            </div>
+
+                        </div>
 
                     </article>
 
                 </div>
 
-            </section>
+            </div>
+
+        </section>
 
 
-            <!-- =========================
-                 CONTATO
-            ========================== -->
+        <!-- =====================================================
+             PROJECTS
+        ====================================================== -->
 
-            <section id="contact" class="contact">
+        <section id="projects"
+                 class="border-y border-white/5 bg-[#080809]">
 
-                <h2 class="section-title">
-                    Vamos conversar?
-                </h2>
+            <div class="mx-auto max-w-7xl px-4 py-28 sm:px-6 lg:px-8">
 
-                <p>
-                    Estou aberto a oportunidades, projetos e conexões
-                    profissionais.
-                </p>
 
-                <div class="contact-links">
+                <div class="mb-16 flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
 
-                    <a href="mailto:seuemail@email.com"
-                       class="button primary">
-                        Email
+                    <div>
+
+                        <p class="mb-4 font-mono text-xs tracking-[.3em] text-red-500">
+                            03 / PROJECTS
+                        </p>
+
+                        <h2 class="text-4xl font-black tracking-tight text-white sm:text-6xl">
+
+                            Things I've
+                            <span class="text-red-500">
+                                built.
+                            </span>
+
+                        </h2>
+
+                    </div>
+
+
+                    <a href="https://github.com/ThiWB?tab=repositories"
+                       target="_blank"
+                       class="font-mono text-xs text-slate-600 transition hover:text-red-400">
+
+                        GitHub →
                     </a>
 
-                    <a href="#"
-                       class="button">
+                </div>
+
+
+                <div class="grid gap-6 lg:grid-cols-2">
+
+
+                    <!-- PROJECT 1 -->
+
+                    <article class="project-card rounded-2xl border border-white/5 bg-black/30 transition duration-500 hover:-translate-y-1 hover:border-red-500/30 hover:bg-red-500/[.025]">
+
+
+                        <div class="relative h-64 overflow-hidden bg-gradient-to-br from-red-950/40 via-black to-[#13070a]">
+
+                            <div class="grid-background absolute inset-0 opacity-50"></div>
+
+
+                            <div class="absolute inset-0 flex items-center justify-center">
+
+                                <div class="rounded-2xl border border-red-500/20 bg-black/70 px-10 py-8 text-center shadow-2xl shadow-red-950/30 backdrop-blur-xl">
+
+                                    <p class="font-mono text-[10px] uppercase tracking-[.3em] text-slate-600">
+                                        infrastructure
+                                    </p>
+
+                                    <p class="mt-3 text-3xl font-black text-red-400">
+                                        VMmanager
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="p-8">
+
+
+                            <div class="mb-4 flex items-center justify-between">
+
+                                <h3 class="text-2xl font-bold text-white">
+                                    VMmanager
+                                </h3>
+
+                                <a href="https://github.com/ThiWB?tab=repositories"
+                                   target="_blank"
+                                   class="text-slate-700 transition hover:text-red-400">
+                                    ↗
+                                </a>
+
+                            </div>
+
+
+                            <p class="leading-7 text-slate-500">
+
+                                On-premise cloud provisioning platform designed
+                                to simulate public cloud architectures for managing
+                                private data centers.
+
+                            </p>
+
+
+                            <div class="mt-6 flex flex-wrap gap-2">
+
+                                @foreach (var tech in new[]
+                                {
+                                "ASP.NET Core",
+                                "C#",
+                                "VMware",
+                                "REST API",
+                                "Tailwind"
+                                })
+                                {
+                                    <span class="rounded-md border border-red-500/10 bg-red-500/5 px-2.5 py-1 font-mono text-[10px] text-red-400">
+                                        @tech
+                                    </span>
+                                }
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- PROJECT 2 -->
+
+                    <article class="project-card rounded-2xl border border-white/5 bg-black/30 transition duration-500 hover:-translate-y-1 hover:border-red-500/30 hover:bg-red-500/[.025]">
+
+
+                        <div class="relative h-64 overflow-hidden bg-gradient-to-br from-[#14070a] via-black to-red-950/30">
+
+                            <div class="grid-background absolute inset-0 opacity-50"></div>
+
+
+                            <div class="absolute inset-0 flex items-center justify-center">
+
+                                <div class="rounded-2xl border border-red-500/20 bg-black/70 px-10 py-8 text-center shadow-2xl shadow-red-950/30 backdrop-blur-xl">
+
+                                    <p class="font-mono text-[10px] uppercase tracking-[.3em] text-slate-600">
+                                        observability
+                                    </p>
+
+                                    <p class="mt-3 text-3xl font-black text-red-400">
+                                        Monitoring
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="p-8">
+
+
+                            <div class="mb-4 flex items-center justify-between">
+
+                                <h3 class="text-2xl font-bold text-white">
+                                    Infrastructure Dashboards
+                                </h3>
+
+                                <a href="https://github.com/ThiWB?tab=repositories"
+                                   target="_blank"
+                                   class="text-slate-700 transition hover:text-red-400">
+                                    ↗
+                                </a>
+
+                            </div>
+
+
+                            <p class="leading-7 text-slate-500">
+
+                                Infrastructure monitoring environment using
+                                Zabbix, Grafana and Observium to track servers,
+                                virtualization platforms and network devices.
+
+                            </p>
+
+
+                            <div class="mt-6 flex flex-wrap gap-2">
+
+                                @foreach (var tech in new[]
+                                {
+                                "Zabbix",
+                                "Grafana",
+                                "Observium",
+                                "VMware",
+                                "Linux"
+                                })
+                                {
+                                    <span class="rounded-md border border-red-500/10 bg-red-500/5 px-2.5 py-1 font-mono text-[10px] text-red-400">
+                                        @tech
+                                    </span>
+                                }
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             CERTIFICATIONS
+        ====================================================== -->
+
+        <section id="certifications">
+
+            <div class="mx-auto max-w-7xl px-4 py-28 sm:px-6 lg:px-8">
+
+
+                <div class="mb-16">
+
+                    <p class="mb-4 font-mono text-xs tracking-[.3em] text-red-500">
+                        04 / CERTIFICATIONS
+                    </p>
+
+                    <h2 class="text-4xl font-black tracking-tight text-white sm:text-6xl">
+
+                        Always
+                        <span class="text-red-500">
+                            learning.
+                        </span>
+
+                    </h2>
+
+                </div>
+
+
+                <div class="grid gap-4 md:grid-cols-3">
+
+
+                    @foreach (var cert in new[]
+                    {
+                    new {
+                    Code = "AWS",
+                    Title = "DevOps Journey with AWS",
+                    Provider = "Digital Innovation One",
+                    Hours = "69 hours"
+                    },
+                    new {
+                    Code = "LNX",
+                    Title = "CompTIA Linux+ Complete Course",
+                    Provider = "Udemy",
+                    Hours = "21 hours"
+                    },
+                    new {
+                    Code = "VM",
+                    Title = "Mastering VMware PowerCLI",
+                    Provider = "Udemy",
+                    Hours = "6 hours"
+                    }
+                    })
+                    {
+                        <article class="group rounded-2xl border border-white/5 bg-black/20 p-6 transition duration-300 hover:-translate-y-1 hover:border-red-500/30 hover:bg-red-500/[.025]">
+
+                            <div class="mb-8 flex h-12 w-12 items-center justify-center rounded-xl border border-red-500/10 bg-red-500/5 font-mono text-xs font-bold text-red-400">
+                                @cert.Code
+                            </div>
+
+                            <h3 class="font-semibold text-white">
+                                @cert.Title
+                            </h3>
+
+                            <p class="mt-2 text-sm text-slate-600">
+                                @cert.Provider
+                            </p>
+
+                            <p class="mt-4 font-mono text-[10px] text-slate-700">
+                                @cert.Hours
+                            </p>
+
+                        </article>
+                    }
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             CONTACT
+        ====================================================== -->
+
+        <section id="contact"
+                 class="relative overflow-hidden border-t border-white/5">
+
+
+            <div class="absolute left-1/2 top-1/2 -z-10 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-red-600/10 blur-[130px]"></div>
+
+
+            <div class="mx-auto max-w-4xl px-4 py-36 text-center sm:px-6 lg:px-8">
+
+
+                <p class="mb-5 font-mono text-xs tracking-[.3em] text-red-500">
+                    05 / CONTACT
+                </p>
+
+
+                <h2 class="text-5xl font-black leading-[.95] tracking-tight text-white sm:text-7xl">
+
+                    Let's build
+
+                    <br />
+
+                    something
+
+                    <span class="text-gradient">
+                        great.
+                    </span>
+
+                </h2>
+
+
+                <p class="mx-auto mt-8 max-w-2xl text-lg leading-8 text-slate-500">
+
+                    I'm open to new professional opportunities,
+                    software development projects and interesting
+                    technical conversations.
+
+                </p>
+
+
+                <div class="mt-10 flex flex-wrap justify-center gap-4">
+
+
+                    <a href="mailto:thibalbinot@gmail.com"
+                       class="rounded-xl bg-red-600 px-7 py-3.5 font-semibold text-white shadow-lg shadow-red-950/30 transition hover:-translate-y-0.5 hover:bg-red-500">
+
+                        Email me
+                    </a>
+
+
+                    <a href="https://www.linkedin.com/in/thiago-wurster-balbinot-3b1932306/"
+                       target="_blank"
+                       class="rounded-xl border border-slate-800 bg-black/30 px-7 py-3.5 font-semibold text-slate-300 transition hover:border-red-500/30 hover:text-red-400">
+
                         LinkedIn
                     </a>
 
-                    <a href="#"
-                       class="button">
+
+                    <a href="https://github.com/ThiWB"
+                       target="_blank"
+                       class="rounded-xl border border-slate-800 bg-black/30 px-7 py-3.5 font-semibold text-slate-300 transition hover:border-red-500/30 hover:text-red-400">
+
                         GitHub
                     </a>
 
                 </div>
 
-            </section>
+            </div>
 
-        </main>
+        </section>
 
+    </main>
 
-        <!-- =========================
-             FOOTER
-        ========================== -->
+    <footer class="border-t border-white/5">
 
-        <footer>
+        <div class="mx-auto flex max-w-7xl flex-col gap-3 px-4 py-8 text-xs text-slate-700 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
 
-            <p>
-                © @DateTime.Now.Year Thiago Wurster Balbinot. Todos os direitos reservados.
+            <p class="font-mono">
+                © @DateTime.Now.Year Thiago Wurster Balbinot
             </p>
 
-        </footer>
+            <p class="font-mono">
+                Built with .NET · C# · Tailwind
+            </p>
 
-    </body>
+        </div>
+
+    </footer>
+
+
+</body>
+
 </html>
