@@ -14,9 +14,9 @@ namespace CurriculumVitae.Core.Domain.Entities
 
         public string? Subtitle { get; set; }
 
-        public DateOnly EntryDate { get; set; }
+        public DateTime EntryDate { get; set; }
 
-        public DateOnly? EndDate { get; set; }
+        public DateTime? EndDate { get; set; }
 
         public string? Description { get; set; }
 

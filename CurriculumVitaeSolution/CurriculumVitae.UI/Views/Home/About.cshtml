@@ -1,5 +1,280 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ThiagoWB · The path so far</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Tailwind + custom config -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'ui-sans-serif', 'system-ui'],
+                        mono: ['JetBrains Mono', 'monospace']
+                    },
+                    colors: {
+                        blood: {
+                            400: '#fb4b4b',
+                            500: '#ef233c',
+                            600: '#d90429',
+                            700: '#b00020',
+                            800: '#7f0018',
+                            900: '#45000d'
+                        }
+                    },
+                    boxShadow: {
+                        'red-glow': '0 0 45px rgba(239,35,60,.14)',
+                        'red-strong': '0 0 80px rgba(239,35,60,.20)'
+                    },
+                    animation: {
+                        float: 'float 6s ease-in-out infinite',
+                        'pulse-red': 'pulseRed 4s ease-in-out infinite',
+                        blink: 'blink 1s step-end infinite'
+                    },
+                    keyframes: {
+                        float: { '0%, 100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-10px)' } },
+                        pulseRed: { '0%, 100%': { opacity: '.25', transform: 'scale(1)' }, '50%': { opacity: '.5', transform: 'scale(1.08)' } },
+                        blink: { '0%, 50%': { opacity: '1' }, '51%, 100%': { opacity: '0' } }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        :root {
+            color-scheme: dark;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+            background: radial-gradient(circle at 15% 10%, rgba(239,35,60,.10), transparent 28%), radial-gradient(circle at 85% 20%, rgba(127,0,24,.12), transparent 30%), radial-gradient(circle at 50% 100%, rgba(239,35,60,.05), transparent 35%), #050506;
+            color: #e5e7eb;
+            overflow-x: hidden;
+        }
+
+        ::selection {
+            background: rgba(239,35,60,.35);
+            color: white;
+        }
+
+        .grid-background {
+            background-image: linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+            background-size: 45px 45px;
+        }
+
+        .glass {
+            background: rgba(8,8,10,.72);
+            border: 1px solid rgba(255,255,255,.07);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        .text-gradient {
+            background: linear-gradient(90deg, #ffffff 0%, #fb4b4b 45%, #d90429 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .red-line {
+            background: linear-gradient(90deg, transparent, #ef233c, transparent);
+        }
+
+        #scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            z-index: 9999;
+            background: linear-gradient(90deg, #fb4b4b, #d90429);
+            box-shadow: 0 0 15px rgba(239,35,60,.7);
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(25px);
+            transition: opacity .8s ease, transform .8s ease;
+        }
+
+            .reveal.visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #050506;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #3b0b11;
+            border-radius: 999px;
+        }
+
+            ::-webkit-scrollbar-thumb:hover {
+                background: #d90429;
+            }
+        @@media (prefers-reduced-motion: reduce) {
+            html
+
+        {
+            scroll-behavior: auto;
+        }
+
+        *, *::before, *::after {
+            animation-duration: .01ms !important;
+            transition-duration: .01ms !important;
+        }
+
+        }
+
+        .nav-link.active {
+            color: #fb4b4b;
+        }
+
+        #cursor-glow {
+            position: fixed;
+            width: 300px;
+            height: 300px;
+            border-radius: 9999px;
+            background: radial-gradient(circle, rgba(239,35,60,.07), transparent 70%);
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+            opacity: 0;
+            transition: opacity .3s ease;
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <div id="scroll-progress"></div>
+    <div id="cursor-glow"></div>
+
+
+
+    <main class="pt-2">
+
+
+        <!-- JOURNEY / long-form text about me (only this section) -->
+        <section id="journey" class="relative">
+
+            <!-- ambient glow -->
+            <div class="absolute left-1/2 top-1/3 h-[400px] w-[400px] -translate-x-1/2 rounded-full bg-red-600/10 blur-[120px]"></div>
+
+            <div class="relative mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8">
+                <nav class="flex items-center justify-start w-full mb-10">
+                    <a asp-controller="Home" asp-action="Index"
+                       class="group inline-flex items-center gap-3 rounded-xl bg-red-600 px-6 py-3.5 font-semibold text-white shadow-lg shadow-red-950/30 transition hover:-translate-y-1 hover:bg-red-500">
+
+                        <svg class="w-4 h-4 transition-transform group-hover:-translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                        </svg>
+
+                        Back to Home
+                    </a>
+                </nav>
+
+                <div class="reveal">
+                    <p class="mb-4 font-mono text-xs tracking-[.3em] text-red-500">THE JOURNEY</p>
+                    <h2 class="text-4xl font-black tracking-tight text-white sm:text-6xl mb-12">
+                        The Road <span class="text-red-500">So Far.</span>
+                    </h2>
+                </div>
+
+                <div class="space-y-10 text-slate-300 leading-relaxed text-lg">
+                    <p class="reveal">
+                        I was born and raised in Videira, Santa Catarina — a small city in southern Brazil.
+                        My first contact with programming came from curiosity: I wanted to understand how
+                        the websites and games I used actually worked. That led me to explore C#, Java,
+                        and the .NET ecosystem, which quickly became my home.
+                    </p>
+                    <p class="reveal">
+                        Over the years, I realized that writing code is just one piece of the puzzle.
+                        Deploying it, keeping it running, scaling it — that's where the real challenge begins.
+                        That's why I dove into Linux, virtualization (VMware, Hyper-V), networking (MikroTik),
+                        and monitoring (Zabbix, Grafana). Today, I see the whole picture.
+                    </p>
+                    <p class="reveal">
+                        I'm currently pursuing a B.S. in Computer Science at UNOESC (expected 2027),
+                        while working on projects that combine modern web development with robust
+                        infrastructure. I believe that great software is built by people who understand
+                        both the code and the environment it runs on.
+                    </p>
+                    <p class="reveal">
+                        Beyond tech, I'm passionate about teaching, sharing knowledge, and collaborating
+                        with teams that value transparency and craftsmanship. I'm always open to
+                        interesting conversations — and interesting problems.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+    </main>
+    <footer class="border-t border-white/5">
+
+        <div class="mx-auto flex max-w-7xl flex-col gap-3 px-4 py-8 text-xs text-slate-700 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
+
+            <p class="font-mono">
+                © @DateTime.Now.Year Thiago Wurster Balbinot
+            </p>
+
+        </div>
+
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // scroll progress
+            const progress = document.getElementById("scroll-progress");
+            function updateScrollProgress() {
+                const scrollTop = window.scrollY;
+                const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+                const percentage = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+                progress.style.width = `${percentage}%`;
+            }
+            window.addEventListener("scroll", updateScrollProgress, { passive: true });
+            updateScrollProgress();
+
+            // reveal on scroll
+            const revealObserver = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("visible");
+                        revealObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.15 });
+            document.querySelectorAll(".reveal").forEach(el => revealObserver.observe(el));
+
+            // cursor glow
+            const cursorGlow = document.getElementById("cursor-glow");
+            const finePointer = window.matchMedia("(pointer: fine)");
+            if (finePointer.matches) {
+                window.addEventListener("mousemove", e => {
+                    cursorGlow.style.left = `${e.clientX}px`;
+                    cursorGlow.style.top = `${e.clientY}px`;
+                    cursorGlow.style.opacity = "1";
+                }, { passive: true });
+                document.addEventListener("mouseleave", () => cursorGlow.style.opacity = "0");
+            }
+        });
+    </script>
+</body>
+</html>

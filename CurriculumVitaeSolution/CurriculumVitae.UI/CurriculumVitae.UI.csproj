@@ -11,4 +11,13 @@
     <ProjectReference Include="..\CurriculumVitae.Infrastructure\CurriculumVitae.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\images\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.ResponseCompression" Version="2.3.11" />
+    <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="10.0.10" />
+  </ItemGroup>
+
 </Project>

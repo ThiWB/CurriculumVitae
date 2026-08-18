@@ -1,136 +1,238 @@
-﻿@{
-    ViewData["Title"] = "Thiago Wurster Balbinot - Full-Stack Developer";
+﻿@model CurriculumVitae.Core.Application.ViewModels.HomeViewModel;
+
+@{
+    ViewData["Title"] = "ThiagoWB — Full-Stack .NET";
+
+    var skills = new[]
+    {
+        "C#",
+        ".NET",
+        "ASP.NET Core",
+        "Java",
+        "REST APIs",
+        "SOAP",
+        "PostgreSQL",
+        "SQL Server",
+        "Dapper",
+        "Entity Framework",
+        "JavaScript",
+        "Tailwind CSS",
+        "AWS",
+        "Google Cloud Platform",
+        "VMware ESXi/vCenter",
+        "Hyper-V",
+        "Linux",
+        "Windows Server",
+        "MikroTik",
+        "Zabbix",
+        "Grafana"
+    };
+
+    var certifications = new[]
+    {
+        new
+        {
+            Code = "AWS",
+            Title = "DevOps Journey with AWS",
+            Provider = "Digital Innovation One",
+            Hours = "69 hours"
+        },
+        new
+        {
+            Code = "LNX",
+            Title = "CompTIA Linux+ Complete Course",
+            Provider = "Udemy",
+            Hours = "21 hours"
+        },
+        new
+        {
+            Code = "VM",
+            Title = "Mastering VMware PowerCLI",
+            Provider = "Udemy",
+            Hours = "6 hours"
+        }
+    };
 }
 
 <!DOCTYPE html>
+
 <html lang="en" class="scroll-smooth">
 
 <head>
+
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0" />
+
+    <meta name="description"
+          content="Thiago Wurster Balbinot — Full-Stack Developer | .NET, C#, Java, APIs, databases and infrastructure" />
+
+    <meta name="author"
+          content="Thiago Wurster Balbinot" />
+
+    <meta name="theme-color"
+          content="#050506" />
 
     <title>@ViewData["Title"]</title>
 
-    <!-- Tailwind -->
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com" />
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin />
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap"
+          rel="stylesheet" />
+
     <script src="https://cdn.tailwindcss.com"></script>
 
     <script>
+
         tailwind.config = {
+
             theme: {
+
                 extend: {
 
                     fontFamily: {
-                        sans: ['Inter', 'ui-sans-serif', 'system-ui'],
-                        mono: ['JetBrains Mono', 'monospace']
+
+                        sans: [
+                            "Inter",
+                            "ui-sans-serif",
+                            "system-ui"
+                        ],
+
+                        mono: [
+                            "JetBrains Mono",
+                            "monospace"
+                        ]
+
                     },
 
                     colors: {
+
                         blood: {
-                            400: '#fb4b4b',
-                            500: '#ef233c',
-                            600: '#d90429',
-                            700: '#b00020',
-                            800: '#7f0018',
-                            900: '#45000d'
+
+                            400: "#fb4b4b",
+                            500: "#ef233c",
+                            600: "#d90429",
+                            700: "#b00020",
+                            800: "#7f0018",
+                            900: "#45000d"
+
                         }
+
                     },
 
                     boxShadow: {
-                        'red-glow': '0 0 45px rgba(239,35,60,.18)',
-                        'red-strong': '0 0 80px rgba(239,35,60,.25)'
+
+                        "red-glow":
+                            "0 0 45px rgba(239,35,60,.14)",
+
+                        "red-strong":
+                            "0 0 80px rgba(239,35,60,.20)"
+
                     },
 
                     animation: {
-                        'float': 'float 6s ease-in-out infinite',
-                        'pulse-red': 'pulseRed 3s ease-in-out infinite',
-                        'scan': 'scan 5s linear infinite',
-                        'blink': 'blink 1s step-end infinite'
+
+                        "float":
+                            "float 6s ease-in-out infinite",
+
+                        "pulse-red":
+                            "pulseRed 4s ease-in-out infinite",
+
+                        "blink":
+                            "blink 1s step-end infinite"
+
                     },
 
                     keyframes: {
 
                         float: {
-                            '0%, 100%': {
-                                transform: 'translateY(0px)'
+
+                            "0%, 100%": {
+                                transform: "translateY(0)"
                             },
-                            '50%': {
-                                transform: 'translateY(-12px)'
+
+                            "50%": {
+                                transform: "translateY(-10px)"
                             }
+
                         },
 
                         pulseRed: {
-                            '0%, 100%': {
-                                opacity: '.35',
-                                transform: 'scale(1)'
-                            },
-                            '50%': {
-                                opacity: '.65',
-                                transform: 'scale(1.08)'
-                            }
-                        },
 
-                        scan: {
-                            '0%': {
-                                transform: 'translateY(-100%)'
+                            "0%, 100%": {
+                                opacity: ".25",
+                                transform: "scale(1)"
                             },
-                            '100%': {
-                                transform: 'translateY(100%)'
+
+                            "50%": {
+                                opacity: ".5",
+                                transform: "scale(1.08)"
                             }
+
                         },
 
                         blink: {
-                            '0%, 50%': {
-                                opacity: '1'
+
+                            "0%, 50%": {
+                                opacity: "1"
                             },
-                            '51%, 100%': {
-                                opacity: '0'
+
+                            "51%, 100%": {
+                                opacity: "0"
                             }
+
                         }
+
                     }
+
                 }
+
             }
-        }
+
+        };
+
     </script>
-
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap"
-          rel="stylesheet">
 
     <style>
 
-        /* =========================================================
-                   BASE
-                ========================================================= */
+        :root {
+            color-scheme: dark;
+        }
 
         html {
             scroll-behavior: smooth;
         }
 
         body {
-            background: radial-gradient( circle at 15% 10%, rgba(239, 35, 60, .12), transparent 28% ), radial-gradient( circle at 85% 20%, rgba(127, 0, 24, .14), transparent 30% ), radial-gradient( circle at 50% 100%, rgba(239, 35, 60, .06), transparent 35% ), #050506;
+            min-height: 100vh;
+            background: radial-gradient( circle at 15% 10%, rgba(239, 35, 60, .10), transparent 28% ), radial-gradient( circle at 85% 20%, rgba(127, 0, 24, .12), transparent 30% ), radial-gradient( circle at 50% 100%, rgba(239, 35, 60, .05), transparent 35% ), #050506;
             color: #e5e7eb;
+            overflow-x: hidden;
         }
+
 
         ::selection {
             background: rgba(239, 35, 60, .35);
             color: white;
         }
 
-        /* =========================================================
-                   GRID
-                ========================================================= */
-
         .grid-background {
             background-image: linear-gradient( rgba(255,255,255,.025) 1px, transparent 1px ), linear-gradient( 90deg, rgba(255,255,255,.025) 1px, transparent 1px );
             background-size: 45px 45px;
         }
 
-        /* =========================================================
-                   TEXT
-                ========================================================= */
+        .glass {
+            background: rgba(8, 8, 10, .72);
+            border: 1px solid rgba(255,255,255,.07);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
 
         .text-gradient {
             background: linear-gradient( 90deg, #ffffff 0%, #fb4b4b 45%, #d90429 100% );
@@ -139,87 +241,72 @@
             color: transparent;
         }
 
-        .text-gradient-red {
-            background: linear-gradient( 90deg, #fb4b4b, #d90429 );
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        /* =========================================================
-                   GLASS
-                ========================================================= */
-
-        .glass {
-            background: rgba(10, 10, 12, .72);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255,255,255,.07);
-        }
-
-        /* =========================================================
-                   RED GLOW
-                ========================================================= */
-
-        .red-glow {
-            box-shadow: 0 0 40px rgba(239,35,60,.12), inset 0 0 30px rgba(239,35,60,.025);
-        }
-
         .red-line {
             background: linear-gradient( 90deg, transparent, #ef233c, transparent );
         }
 
-        /* =========================================================
-                   HERO IMAGE
-                ========================================================= */
+        #scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            z-index: 9999;
+            background: linear-gradient( 90deg, #fb4b4b, #d90429 );
+            box-shadow: 0 0 15px rgba(239,35,60,.7);
+        }
 
-        .profile-frame {
+        .reveal {
+            opacity: 0;
+            transform: translateY(25px);
+            transition: opacity .8s ease, transform .8s ease;
+        }
+
+
+            .reveal.visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        .profile-image-wrapper {
             position: relative;
         }
 
-            .profile-frame::before {
+
+            .profile-image-wrapper::before {
                 content: "";
                 position: absolute;
-                inset: -1px;
-                background: linear-gradient( 135deg, rgba(239,35,60,.8), transparent 35%, transparent 65%, rgba(127,0,24,.7) );
-                border-radius: 1.5rem;
+                inset: -24px;
+                border-radius: 2rem;
+                background: rgba(239,35,60,.10);
+                filter: blur(50px);
+                opacity: .7;
+                transition: opacity .5s ease;
                 z-index: -1;
-                filter: blur(1px);
             }
 
-            .profile-frame::after {
-                content: "";
-                position: absolute;
-                inset: 0;
-                background: linear-gradient( 180deg, transparent 55%, rgba(239,35,60,.12) );
-                pointer-events: none;
-                border-radius: 1.5rem;
+
+            .profile-image-wrapper:hover::before {
+                opacity: 1;
             }
 
-        /* =========================================================
-                   TERMINAL
-                ========================================================= */
 
-        .terminal {
-            background: #08090c;
-            border: 1px solid rgba(239,35,60,.18);
-            box-shadow: 0 25px 80px rgba(0,0,0,.55), 0 0 60px rgba(239,35,60,.08);
+        .profile-image {
+            transition: transform .7s cubic-bezier(.2,.8,.2,1), filter .7s ease;
         }
 
-        .terminal-line::before {
-            content: ">";
-            color: #ef233c;
-            margin-right: .65rem;
-        }
 
-        /* =========================================================
-                   CARD
-                ========================================================= */
+        .profile-image-wrapper:hover
+        .profile-image {
+            transform: scale(1.025);
+        }
 
         .project-card {
             position: relative;
             overflow: hidden;
+            transition: transform .4s ease, border-color .4s ease, box-shadow .4s ease;
         }
+
 
             .project-card::before {
                 content: "";
@@ -229,100 +316,210 @@
                 width: 100%;
                 height: 1px;
                 background: linear-gradient( 90deg, transparent, #ef233c, transparent );
-                transition: .6s;
+                transition: left .7s ease;
             }
+
 
             .project-card:hover::before {
                 left: 100%;
             }
 
-        /* =========================================================
-                   SCROLLBAR
-                ========================================================= */
+
+            .project-card:hover {
+                transform: translateY(-7px);
+                border-color: rgba(239,35,60,.30);
+                box-shadow: 0 30px 80px rgba(0,0,0,.35), 0 0 50px rgba(239,35,60,.06);
+            }
+
+        .skill-tag {
+            transition: transform .25s ease, border-color .25s ease, color .25s ease, background .25s ease;
+        }
+
+
+            .skill-tag:hover {
+                transform: translateY(-3px);
+            }
+
+        .nav-link.active {
+            color: #fb4b4b;
+        }
+
+
+        #cursor-glow {
+            position: fixed;
+            width: 300px;
+            height: 300px;
+            border-radius: 9999px;
+            background: radial-gradient( circle, rgba(239,35,60,.07), transparent 70% );
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+            opacity: 0;
+            transition: opacity .3s ease;
+        }
 
         ::-webkit-scrollbar {
             width: 8px;
         }
 
+
         ::-webkit-scrollbar-track {
             background: #050506;
         }
+
 
         ::-webkit-scrollbar-thumb {
             background: #3b0b11;
             border-radius: 999px;
         }
 
+
             ::-webkit-scrollbar-thumb:hover {
                 background: #d90429;
             }
 
+
+        @@media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: .01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: .01ms !important;
+            }
+        }
     </style>
+
 </head>
 
 
-<body class="min-h-screen bg-[#050506] text-slate-200 antialiased">
+<body class="antialiased">
 
+    <div id="scroll-progress"></div>
 
-    <!-- =========================================================
-         NAVBAR
-    ========================================================= -->
+    <div id="cursor-glow"></div>
 
     <header class="fixed inset-x-0 top-0 z-50">
 
         <div class="mx-auto max-w-7xl px-4 pt-4 sm:px-6 lg:px-8">
 
-            <nav class="glass red-glow rounded-2xl px-5 py-3">
+            <nav class="glass rounded-2xl px-5 py-3 shadow-red-glow">
 
                 <div class="flex items-center justify-between">
 
                     <a href="#home"
                        class="font-mono text-sm font-semibold tracking-tight text-white">
 
-                        <span class="text-red-500">&lt;</span>
+                        <span class="text-red-500">
+                            &lt;
+                        </span>
 
-                        Thiago
+                        ThiagoWB
 
-                        <span class="text-red-500">/&gt;</span>
+                        <span class="text-red-500">
+                            /&gt;
+                        </span>
 
                     </a>
-
 
                     <div class="hidden items-center gap-8 md:flex">
 
                         <a href="#about"
-                           class="text-sm text-slate-500 transition hover:text-red-400">
+                           class="nav-link text-sm text-slate-500 transition hover:text-red-400">
                             About
                         </a>
 
                         <a href="#experience"
-                           class="text-sm text-slate-500 transition hover:text-red-400">
+                           class="nav-link text-sm text-slate-500 transition hover:text-red-400">
                             Experience
                         </a>
 
                         <a href="#projects"
-                           class="text-sm text-slate-500 transition hover:text-red-400">
+                           class="nav-link text-sm text-slate-500 transition hover:text-red-400">
                             Projects
                         </a>
 
                         <a href="#certifications"
-                           class="text-sm text-slate-500 transition hover:text-red-400">
+                           class="nav-link text-sm text-slate-500 transition hover:text-red-400">
                             Certifications
                         </a>
 
                     </div>
 
+                    <div class="flex items-center gap-3">
 
-                    <a href="#contact"
-                       class="group rounded-xl border border-red-500/30 bg-red-500/10 px-4 py-2 text-sm font-medium text-red-400 transition hover:border-red-400/60 hover:bg-red-500/20 hover:text-red-300">
 
-                        Let's talk
+                        <a href="#contact"
+                           class="hidden rounded-xl border border-red-500/30 bg-red-500/10 px-4 py-2 text-sm font-medium text-red-400 transition hover:border-red-400/60 hover:bg-red-500/20 hover:text-red-300 md:block">
 
-                        <span class="ml-1 transition group-hover:ml-2">
-                            →
-                        </span>
+                            Let's talk
 
-                    </a>
+                        </a>
+
+                        <button id="menu-button"
+                                type="button"
+                                aria-label="Open navigation menu"
+                                aria-expanded="false"
+                                class="rounded-xl border border-white/10 p-2 text-slate-400 transition hover:border-red-500/30 hover:text-red-400 md:hidden">
+
+                            <svg class="h-5 w-5"
+                                 fill="none"
+                                 stroke="currentColor"
+                                 viewBox="0 0 24 24">
+
+                                <path stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                      stroke-width="1.5"
+                                      d="M4 6h16M4 12h16M4 18h16" />
+
+                            </svg>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <div id="mobile-menu"
+                     class="hidden">
+
+                    <div class="mt-4 border-t border-white/5 pt-4">
+
+                        <div class="flex flex-col gap-1">
+
+                            <a href="#about"
+                               class="mobile-link rounded-xl px-3 py-3 text-sm text-slate-500 transition hover:bg-red-500/5 hover:text-red-400">
+                                About
+                            </a>
+
+                            <a href="#experience"
+                               class="mobile-link rounded-xl px-3 py-3 text-sm text-slate-500 transition hover:bg-red-500/5 hover:text-red-400">
+                                Experience
+                            </a>
+
+                            <a href="#projects"
+                               class="mobile-link rounded-xl px-3 py-3 text-sm text-slate-500 transition hover:bg-red-500/5 hover:text-red-400">
+                                Projects
+                            </a>
+
+                            <a href="#certifications"
+                               class="mobile-link rounded-xl px-3 py-3 text-sm text-slate-500 transition hover:bg-red-500/5 hover:text-red-400">
+                                Certifications
+                            </a>
+
+                            <a href="#contact"
+                               class="mobile-link mt-2 rounded-xl bg-red-600 px-4 py-3 text-center text-sm font-semibold text-white transition hover:bg-red-500">
+                                Let's talk
+                            </a>
+
+                        </div>
+
+                    </div>
 
                 </div>
 
@@ -332,103 +529,75 @@
 
     </header>
 
-
     <main id="home">
-
-
-        <!-- =====================================================
-             HERO
-        ====================================================== -->
 
         <section class="relative min-h-screen overflow-hidden">
 
-            <div class="grid-background absolute inset-0 -z-20 opacity-60"></div>
+
+            <div class="grid-background absolute inset-0 opacity-60"></div>
 
 
-            <div class="absolute left-1/2 top-20 -z-10 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-red-700/10 blur-[130px] animate-pulse-red"></div>
+            <div class="absolute left-1/2 top-20 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-red-700/10 blur-[130px] animate-pulse-red"></div>
 
 
-            <div class="absolute -left-32 top-1/3 -z-10 h-72 w-72 rounded-full bg-red-900/10 blur-[100px]"></div>
+            <div class="absolute -left-32 top-1/3 h-72 w-72 rounded-full bg-red-900/10 blur-[100px]"></div>
+
+            <div class="relative mx-auto flex min-h-screen max-w-7xl items-center px-4 pb-20 pt-36 sm:px-6 lg:px-8">
+
+                <div class="grid w-full gap-10 lg:grid-cols-[1.2fr_.8fr] lg:items-center lg:gap-20">
 
 
-            <div class="mx-auto flex min-h-screen max-w-7xl items-center px-4 pb-20 pt-36 sm:px-6 lg:px-8">
-
-                <div class="grid w-full gap-20 lg:grid-cols-[1.25fr_.75fr] lg:items-center">
+                    <div class="reveal">
 
 
-                    <!-- HERO CONTENT -->
+                        <h1 class="max-w-5xl text-5xl font-black leading-[.9] tracking-[-.05em] text-white sm:text-7xl lg:text-[6.4rem]">
 
-                    <div>
+                            &lt;Hello
 
-                        <div class="mb-6 flex items-center gap-3">
-
-                            <span class="h-px w-10 bg-red-500"></span>
-
-                            <p class="font-mono text-xs uppercase tracking-[.3em] text-red-400">
-                                Full-Stack Developer
-                            </p>
-
-                        </div>
-
-
-                        <h1 class="max-w-5xl text-5xl font-black leading-[.9] tracking-[-.04em] text-white sm:text-6xl lg:text-[6.5rem]">
-
-                            Hello
-
-                            <span class="text-slate-600">
+                            <span class="text-slate-700">
                                 friend.
                             </span>
 
                             <br />
 
-                            <span class="text-slate-500">
+                            <span class="text-slate-600">
                                 I'm
                             </span>
 
-                            <br />
-
                             <span class="text-gradient">
-                                Thiago.
+                                Thiago.&gt;
                             </span>
 
                         </h1>
-
 
                         <p class="mt-8 max-w-2xl text-lg leading-8 text-slate-500 sm:text-xl">
 
                             Full-Stack Developer focused on
 
-                            <span class="font-medium text-slate-200">
+                            <span class="font-semibold text-slate-200">
                                 .NET, C#, Java, APIs and databases
                             </span>
 
                             with a strong background in
 
-                            <span class="font-medium text-red-400">
+                            <span class="font-semibold text-red-400">
                                 infrastructure and virtualization.
                             </span>
 
                         </p>
 
-
-                        <!-- BUTTONS -->
-
                         <div class="mt-10 flex flex-wrap gap-4">
 
                             <a href="#projects"
-                               class="group inline-flex items-center gap-3 rounded-xl bg-red-600 px-6 py-3.5 font-semibold text-white shadow-lg shadow-red-900/20 transition hover:-translate-y-0.5 hover:bg-red-500">
+                               class="group inline-flex items-center gap-3 rounded-xl bg-red-600 px-6 py-3.5 font-semibold text-white shadow-lg shadow-red-950/30 transition hover:-translate-y-1 hover:bg-red-500">
 
                                 View my work
-
-                                <span class="transition group-hover:translate-x-1">
-                                    →
-                                </span>
 
                             </a>
 
 
                             <a href="#contact"
-                               class="inline-flex items-center gap-3 rounded-xl border border-slate-800 bg-black/30 px-6 py-3.5 font-semibold text-slate-200 transition hover:border-red-500/40 hover:bg-red-500/5">
+                               class="inline-flex items-center gap-3 rounded-xl border border-slate-800 bg-black/30 px-6 py-3.5 font-semibold text-slate-300 transition hover:-translate-y-1 hover:border-red-500/40 hover:text-white">
 
                                 Contact me
 
@@ -436,106 +605,32 @@
 
                         </div>
 
-
-                        <!-- SOCIAL -->
-
-                        <div class="mt-12 flex flex-wrap items-center gap-5 font-mono text-xs">
-
-                            <a href="https://github.com/ThiWB"
-                               target="_blank"
-                               class="text-slate-600 transition hover:text-red-400">
-                                GitHub
-                            </a>
-
-                            <span class="text-slate-800">
-                                /
-                            </span>
-
-                            <a href="https://www.linkedin.com/in/thiago-wurster-balbinot-3b1932306/"
-                               target="_blank"
-                               class="text-slate-600 transition hover:text-red-400">
-                                LinkedIn
-                            </a>
-
-                            <span class="text-slate-800">
-                                /
-                            </span>
-
-                            <a href="mailto:thibalbinot@gmail.com"
-                               class="text-slate-600 transition hover:text-red-400">
-                                Email
-                            </a>
-
-                        </div>
-
                     </div>
 
 
-                    <!-- PROFILE / TERMINAL -->
+                    <div class="flex justify-center lg:justify-end">
 
-                    <div class="hidden lg:block">
+                        <div class="profile-image-wrapper reveal group mt-2 lg:mt-0">
 
-                        <div class="animate-float">
+                            <div class="absolute -inset-6 rounded-[2rem] bg-red-600/10 blur-3xl transition duration-700 group-hover:bg-red-600/20"></div>
 
+                            <div class="relative overflow-hidden rounded-[2rem] border border-white/10 bg-[#0a0a0c] shadow-2xl shadow-black/60">
 
-                            <div class="terminal rounded-3xl p-3">
-
-
-                                <!-- TERMINAL HEADER -->
-
-                                <div class="flex items-center justify-between border-b border-white/5 px-4 py-3">
-
-                                    <div class="flex gap-2">
-
-                                        <span class="h-2.5 w-2.5 rounded-full bg-red-500"></span>
-
-                                        <span class="h-2.5 w-2.5 rounded-full bg-slate-700"></span>
-
-                                        <span class="h-2.5 w-2.5 rounded-full bg-slate-700"></span>
-
-                                    </div>
-
-                                    <span class="font-mono text-[10px] text-slate-700">
-                                        thiago@dev ~
-                                    </span>
-
-                                </div>
+                                <img src="@Url.Content("~/images/thiago.webp")"
+                                     alt="Thiago Wurster Balbinot"
+                                     loading="eager"
+                                     class="profile-image relative z-10 aspect-[4/5] w-full max-w-[280px] sm:max-w-[340px] lg:max-w-[380px] object-cover grayscale" />
 
 
-                                <!-- IMAGE -->
 
-                                <div class="profile-frame relative overflow-hidden rounded-2xl bg-black">
-
-                                    <img src="@Url.Content("~/images/thiago.png")"
-                                         alt="Thiago Wurster Balbinot"
-                                         class="relative z-10 w-full object-cover grayscale transition duration-700 hover:grayscale-0" />
-
-                                </div>
-
-
-                                <!-- TERMINAL INFO -->
-
-                                <div class="space-y-2 px-4 py-4 font-mono text-[11px]">
-
-                                    <p class="terminal-line text-slate-500">
-                                        whoami
-                                    </p>
-
-                                    <p class="pl-6 text-red-400">
-                                        Full-Stack Developer
-                                    </p>
-
-                                    <p class="terminal-line mt-3 text-slate-500">
-                                        stack
-                                    </p>
-
-                                    <p class="pl-6 text-slate-600">
-                                        C# · .NET · Java · PostgreSQL
-                                    </p>
-
-                                </div>
+                                <div class="absolute inset-x-0 bottom-0 z-20 h-32 bg-gradient-to-t from-black/70 to-transparent"></div>
 
                             </div>
+
+
+                            <div class="pointer-events-none absolute -right-3 -top-3 h-20 w-20 rounded-tr-[2rem] border-r border-t border-red-500/40 transition duration-500 group-hover:-right-4 group-hover:-top-4"></div>
+
+                            <div class="pointer-events-none absolute -bottom-3 -left-3 h-20 w-20 rounded-bl-[2rem] border-b border-l border-red-500/40 transition duration-500 group-hover:-bottom-4 group-hover:-left-4"></div>
 
                         </div>
 
@@ -545,8 +640,6 @@
 
             </div>
 
-
-            <!-- SCROLL INDICATOR -->
 
             <div class="absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-3 md:flex">
 
@@ -561,10 +654,6 @@
         </section>
 
 
-        <!-- =====================================================
-             ABOUT
-        ====================================================== -->
-
         <section id="about"
                  class="border-y border-white/5 bg-[#080809]">
 
@@ -573,23 +662,25 @@
                 <div class="grid gap-16 lg:grid-cols-[.65fr_1.35fr]">
 
 
-                    <div>
+                    <div class="reveal">
 
                         <p class="mb-4 font-mono text-xs tracking-[.3em] text-red-500">
                             01 / ABOUT
                         </p>
 
                         <h2 class="text-4xl font-black tracking-tight text-white sm:text-6xl">
+
                             About
                             <span class="text-red-500">
                                 me.
                             </span>
+
                         </h2>
 
                     </div>
 
 
-                    <div>
+                    <div class="reveal">
 
                         <p class="text-lg leading-8 text-slate-400">
 
@@ -597,7 +688,7 @@
                             based in Videira, Santa Catarina, Brazil.
 
                             Currently pursuing my B.S. in Computer Science at
-                            <span class="text-white">
+                            <span class="font-medium text-white">
                                 UNOESC
                             </span>,
                             with expected graduation in 2027.
@@ -609,12 +700,10 @@
 
                             My work combines software engineering with infrastructure,
                             allowing me to understand systems from the application layer
-                            all the way down to the servers and virtualization platform.
+                            all the way down to servers, networks and virtualization platforms.
 
                         </p>
 
-
-                        <!-- SKILLS -->
 
                         <div class="mt-12">
 
@@ -623,38 +712,23 @@
                             </p>
 
 
-                            <div class="flex flex-wrap gap-2">
+                            <div class="flex flex-wrap gap-2 mb-10">
 
-                                @foreach (var skill in new[]
+                                @foreach (var skill in skills)
                                 {
-                                "C#",
-                                ".NET",
-                                "ASP.NET Core",
-                                "Java",
-                                "REST",
-                                "SOAP",
-                                "PostgreSQL",
-                                "SQL Server",
-                                "Dapper",
-                                "Entity Framework",
-                                "JavaScript",
-                                "Tailwind CSS",
-                                "AWS",
-                                "VMware ESXi",
-                                "Hyper-V",
-                                "Linux",
-                                "Windows Server",
-                                "MikroTik",
-                                "Zabbix",
-                                "Grafana"
-                                })
-                                {
-                                    <span class="rounded-lg border border-white/5 bg-black/30 px-3 py-2 font-mono text-xs text-slate-500 transition hover:border-red-500/30 hover:bg-red-500/5 hover:text-red-400">
+                                    <span class="skill-tag cursor-default rounded-lg border border-white/5 bg-black/30 px-3 py-2 font-mono text-xs text-slate-500 hover:border-red-500/30 hover:bg-red-500/5 hover:text-red-400">
                                         @skill
                                     </span>
                                 }
 
                             </div>
+
+                            <a asp-controller="Home" asp-action="About"
+                               class="group inline-flex items-center gap-3 rounded-xl bg-red-600 px-6 py-3.5 font-semibold text-white shadow-lg shadow-red-950/30 transition hover:-translate-y-1 hover:bg-red-500">
+
+                                Read More
+
+                            </a>
 
                         </div>
 
@@ -667,26 +741,25 @@
         </section>
 
 
-        <!-- =====================================================
-             EXPERIENCE
-        ====================================================== -->
-
         <section id="experience">
 
             <div class="mx-auto max-w-7xl px-4 py-28 sm:px-6 lg:px-8">
 
 
-                <div class="mb-16">
+                <div class="mb-16 reveal">
 
                     <p class="mb-4 font-mono text-xs tracking-[.3em] text-red-500">
                         02 / EXPERIENCE
                     </p>
 
                     <h2 class="text-4xl font-black tracking-tight text-white sm:text-6xl">
+
                         Where I've
+
                         <span class="text-red-500">
                             worked.
                         </span>
+
                     </h2>
 
                 </div>
@@ -694,179 +767,45 @@
 
                 <div class="relative ml-3 border-l border-red-950">
 
+                    @foreach (var experience in Model.Experiences)
+                    {
+                        <article class="relative pb-16 pl-10">
 
-                    <!-- EXPERIENCE 1 -->
+                            <span class="absolute -left-[5px] top-1 h-2.5 w-2.5 rounded-full bg-slate-700 ring-4 ring-[#05070b]"></span>
 
-                    <article class="relative pb-16 pl-10">
+                            <div class="grid gap-5 lg:grid-cols-[220px_1fr]">
 
-                        <span class="absolute -left-[5px] top-1 h-2.5 w-2.5 rounded-full bg-red-500 ring-4 ring-[#050506] shadow-lg shadow-red-500/50"></span>
-
-
-                        <div class="grid gap-5 lg:grid-cols-[220px_1fr]">
-
-                            <div>
-
-                                <p class="font-mono text-xs text-red-500">
-                                    MAR 2026 — PRESENT
+                                <div>
+                                    <p class="font-mono text-xs text-slate-500">
+                                        @experience.EntryDate.ToString("MMM yyyy")
+                                        —
+                                        @(experience.EndDate == null
+                                                                            ? "Present"
+                                                                            : experience.EndDate?.ToString("MMM yyyy"))
                                 </p>
+                            </div>
+
+                                <div>
+
+                                    <h3 class="text-xl font-semibold text-white">
+                                        @experience.CompanyName
+                                    </h3>
+
+                                    <p class="mt-1 text-slate-500">
+                                        @experience.Subtitle
+                                    </p>
+
+                                    <p class="mt-5 max-w-3xl leading-7 text-slate-400">
+                                        @experience.Description
+                                    </p>
+
+                                </div>
 
                             </div>
 
+                        </article>
+                                        }
 
-                            <div>
-
-                                <h3 class="text-xl font-bold text-white">
-                                    Full-Stack .NET & Java Developer
-                                </h3>
-
-                                <p class="mt-1 text-sm text-red-400">
-                                    ATM - Soluções em Tecnologia
-                                </p>
-
-                                <p class="mt-5 max-w-3xl leading-7 text-slate-500">
-
-                                    Architect and develop web applications using
-                                    ASP.NET Core and Java backends. Design and integrate
-                                    RESTful and SOAP APIs, manage PostgreSQL and SQL Server
-                                    databases and develop automated platforms for virtual
-                                    machine provisioning and on-premise cloud management.
-
-                                </p>
-
-                            </div>
-
-                        </div>
-
-                    </article>
-
-
-                    <!-- EXPERIENCE 2 -->
-
-                    <article class="relative pb-16 pl-10">
-
-                        <span class="absolute -left-[5px] top-1 h-2.5 w-2.5 rounded-full bg-slate-800 ring-4 ring-[#050506]"></span>
-
-
-                        <div class="grid gap-5 lg:grid-cols-[220px_1fr]">
-
-                            <div>
-
-                                <p class="font-mono text-xs text-slate-700">
-                                    OCT 2024 — MAR 2026
-                                </p>
-
-                            </div>
-
-
-                            <div>
-
-                                <h3 class="text-xl font-bold text-white">
-                                    IT & Infrastructure Support Analyst
-                                </h3>
-
-                                <p class="mt-1 text-sm text-slate-600">
-                                    ATM - Soluções em Tecnologia
-                                </p>
-
-                                <p class="mt-5 max-w-3xl leading-7 text-slate-500">
-
-                                    Administered Linux and Windows enterprise servers,
-                                    VMware ESXi virtualization environments, VPN tunnels
-                                    and MikroTik RouterOS networks. Implemented infrastructure
-                                    monitoring using Zabbix, Grafana and Observium.
-
-                                </p>
-
-                            </div>
-
-                        </div>
-
-                    </article>
-
-
-                    <!-- EXPERIENCE 3 -->
-
-                    <article class="relative pb-16 pl-10">
-
-                        <span class="absolute -left-[5px] top-1 h-2.5 w-2.5 rounded-full bg-slate-800 ring-4 ring-[#050506]"></span>
-
-
-                        <div class="grid gap-5 lg:grid-cols-[220px_1fr]">
-
-                            <div>
-
-                                <p class="font-mono text-xs text-slate-700">
-                                    MAY 2024 — SEP 2024
-                                </p>
-
-                            </div>
-
-
-                            <div>
-
-                                <h3 class="text-xl font-bold text-white">
-                                    IT Support Intern
-                                </h3>
-
-                                <p class="mt-1 text-sm text-slate-600">
-                                    Videplast - Indústria de Embalagens Flexíveis
-                                </p>
-
-                                <p class="mt-5 max-w-3xl leading-7 text-slate-500">
-
-                                    Hardware troubleshooting, network point activation,
-                                    preventative maintenance, operating system upgrades
-                                    and localized technical support.
-
-                                </p>
-
-                            </div>
-
-                        </div>
-
-                    </article>
-
-
-                    <!-- EXPERIENCE 4 -->
-
-                    <article class="relative pl-10">
-
-                        <span class="absolute -left-[5px] top-1 h-2.5 w-2.5 rounded-full bg-slate-800 ring-4 ring-[#050506]"></span>
-
-
-                        <div class="grid gap-5 lg:grid-cols-[220px_1fr]">
-
-                            <div>
-
-                                <p class="font-mono text-xs text-slate-700">
-                                    JAN 2022 — DEC 2023
-                                </p>
-
-                            </div>
-
-
-                            <div>
-
-                                <h3 class="text-xl font-bold text-white">
-                                    Administrative Assistant Intern
-                                </h3>
-
-                                <p class="mt-1 text-sm text-slate-600">
-                                    Giba Sul Representações
-                                </p>
-
-                                <p class="mt-5 max-w-3xl leading-7 text-slate-500">
-
-                                    Managed corporate communication, customer databases,
-                                    spreadsheet population and order processing workflows.
-
-                                </p>
-
-                            </div>
-
-                        </div>
-
-                    </article>
 
                 </div>
 
@@ -875,17 +814,13 @@
         </section>
 
 
-        <!-- =====================================================
-             PROJECTS
-        ====================================================== -->
-
         <section id="projects"
                  class="border-y border-white/5 bg-[#080809]">
 
             <div class="mx-auto max-w-7xl px-4 py-28 sm:px-6 lg:px-8">
 
 
-                <div class="mb-16 flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
+                <div class="mb-16 flex flex-col justify-between gap-6 sm:flex-row sm:items-end reveal">
 
                     <div>
 
@@ -896,6 +831,7 @@
                         <h2 class="text-4xl font-black tracking-tight text-white sm:text-6xl">
 
                             Things I've
+
                             <span class="text-red-500">
                                 built.
                             </span>
@@ -904,177 +840,107 @@
 
                     </div>
 
-
-                    <a href="https://github.com/ThiWB?tab=repositories"
-                       target="_blank"
-                       class="font-mono text-xs text-slate-600 transition hover:text-red-400">
-
-                        GitHub →
-                    </a>
-
                 </div>
 
 
                 <div class="grid gap-6 lg:grid-cols-2">
+                    @foreach (var project in Model.Projects)
+                    {
+                        <div class="project-card reveal block cursor-pointer overflow-hidden rounded-2xl border border-white/5 bg-black/30 grayscale transition-all duration-500 hover:grayscale-0"
+                             onclick="openProjectModal(
+                                    '@project.ProjectName',
+                                    '@project.Subtitle',
+                                    '@Url.Content(project.Image)',
+                                    '@project.Id',
+                                    '@project.Description',
+                                    '@project.Link'
+                                 )">
 
+                            <div class="relative h-64 overflow-hidden bg-gradient-to-br from-red-950/40 via-black to-[#13070a]">
 
-                    <!-- PROJECT 1 -->
+                                <div class="grid-background absolute inset-0 opacity-50"></div>
 
-                    <article class="project-card rounded-2xl border border-white/5 bg-black/30 transition duration-500 hover:-translate-y-1 hover:border-red-500/30 hover:bg-red-500/[.025]">
+                                <div class="absolute inset-0 flex items-center justify-center p-4">
 
+                                    <div class="h-full w-full rounded-2xl border border-red-500/20 bg-black/70 text-center shadow-2xl shadow-red-950/30 backdrop-blur-xl">
 
-                        <div class="relative h-64 overflow-hidden bg-gradient-to-br from-red-950/40 via-black to-[#13070a]">
+                                        <img class="h-full w-full object-contain"
+                                             src="@Url.Content(project.Image)"
+                                             alt="@project.ProjectName" />
 
-                            <div class="grid-background absolute inset-0 opacity-50"></div>
-
-
-                            <div class="absolute inset-0 flex items-center justify-center">
-
-                                <div class="rounded-2xl border border-red-500/20 bg-black/70 px-10 py-8 text-center shadow-2xl shadow-red-950/30 backdrop-blur-xl">
-
-                                    <p class="font-mono text-[10px] uppercase tracking-[.3em] text-slate-600">
-                                        infrastructure
-                                    </p>
-
-                                    <p class="mt-3 text-3xl font-black text-red-400">
-                                        VMmanager
-                                    </p>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="p-8">
-
-
-                            <div class="mb-4 flex items-center justify-between">
-
-                                <h3 class="text-2xl font-bold text-white">
-                                    VMmanager
-                                </h3>
-
-                                <a href="https://github.com/ThiWB?tab=repositories"
-                                   target="_blank"
-                                   class="text-slate-700 transition hover:text-red-400">
-                                    ↗
-                                </a>
-
-                            </div>
-
-
-                            <p class="leading-7 text-slate-500">
-
-                                On-premise cloud provisioning platform designed
-                                to simulate public cloud architectures for managing
-                                private data centers.
-
-                            </p>
-
-
-                            <div class="mt-6 flex flex-wrap gap-2">
-
-                                @foreach (var tech in new[]
-                                {
-                                "ASP.NET Core",
-                                "C#",
-                                "VMware",
-                                "REST API",
-                                "Tailwind"
-                                })
-                                {
-                                    <span class="rounded-md border border-red-500/10 bg-red-500/5 px-2.5 py-1 font-mono text-[10px] text-red-400">
-                                        @tech
-                                    </span>
-                                }
-
-                            </div>
-
-                        </div>
-
-                    </article>
-
-
-                    <!-- PROJECT 2 -->
-
-                    <article class="project-card rounded-2xl border border-white/5 bg-black/30 transition duration-500 hover:-translate-y-1 hover:border-red-500/30 hover:bg-red-500/[.025]">
-
-
-                        <div class="relative h-64 overflow-hidden bg-gradient-to-br from-[#14070a] via-black to-red-950/30">
-
-                            <div class="grid-background absolute inset-0 opacity-50"></div>
-
-
-                            <div class="absolute inset-0 flex items-center justify-center">
-
-                                <div class="rounded-2xl border border-red-500/20 bg-black/70 px-10 py-8 text-center shadow-2xl shadow-red-950/30 backdrop-blur-xl">
-
-                                    <p class="font-mono text-[10px] uppercase tracking-[.3em] text-slate-600">
-                                        observability
-                                    </p>
-
-                                    <p class="mt-3 text-3xl font-black text-red-400">
-                                        Monitoring
-                                    </p>
+                                    </div>
 
                                 </div>
 
                             </div>
 
-                        </div>
+                            <div class="p-8">
 
-
-                        <div class="p-8">
-
-
-                            <div class="mb-4 flex items-center justify-between">
-
-                                <h3 class="text-2xl font-bold text-white">
-                                    Infrastructure Dashboards
+                                <h3 class="mb-2 text-2xl font-bold text-white">
+                                    @project.ProjectName
                                 </h3>
 
-                                <a href="https://github.com/ThiWB?tab=repositories"
+                                <p class="leading-7 text-slate-500">
+                                    @project.Subtitle
+                                </p>
+
+                            </div>
+
+                        </div>
+                    }
+
+                    <div id="projectModal"
+                         class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80 p-4 backdrop-blur-sm"
+                         onclick="closeProjectModal(event)">
+
+                        <div class="relative w-full max-w-2xl overflow-hidden rounded-2xl border border-white/10 bg-[#0a0a0a] shadow-2xl shadow-red-950/30"
+                             onclick="event.stopPropagation()">
+
+                            <button type="button"
+                                    onclick="closeProjectModal()"
+                                    class="absolute right-4 top-4 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-black/70 text-xl text-white transition hover:bg-red-500">
+                                &times;
+                            </button>
+
+                            <div class="flex h-72 items-center justify-center overflow-hidden bg-black p-4">
+
+                                <img id="modalProjectImage"
+                                     src=""
+                                     alt=""
+                                     class="h-full w-full object-contain" />
+
+                            </div>
+
+                            <div class="p-8">
+
+                                <p class="mb-3 font-mono text-xs tracking-[.3em] text-red-500">
+                                    PROJECT
+                                </p>
+
+                                <h2 id="modalProjectTitle"
+                                    class="mb-1 text-3xl font-black text-white">
+                                </h2>
+
+                                <p id="modalProjectSubtitle"
+                                   class="mb-4 leading-7 text-slate-400">
+                                </p>
+
+                                <p id="modalProjectDescription"
+                                   class="mb-8 leading-7 text-slate-500">
+                                </p>
+
+                                <a id="modalProjectDetails"
+                                   href=""
                                    target="_blank"
-                                   class="text-slate-700 transition hover:text-red-400">
-                                    ↗
+                                   rel="noopener noreferrer"
+                                   class="inline-flex rounded-lg bg-red-500 px-6 py-3 font-semibold text-white transition hover:bg-red-400">
+                                    Link
                                 </a>
 
                             </div>
 
-
-                            <p class="leading-7 text-slate-500">
-
-                                Infrastructure monitoring environment using
-                                Zabbix, Grafana and Observium to track servers,
-                                virtualization platforms and network devices.
-
-                            </p>
-
-
-                            <div class="mt-6 flex flex-wrap gap-2">
-
-                                @foreach (var tech in new[]
-                                {
-                                "Zabbix",
-                                "Grafana",
-                                "Observium",
-                                "VMware",
-                                "Linux"
-                                })
-                                {
-                                    <span class="rounded-md border border-red-500/10 bg-red-500/5 px-2.5 py-1 font-mono text-[10px] text-red-400">
-                                        @tech
-                                    </span>
-                                }
-
-                            </div>
-
                         </div>
-
-                    </article>
-
+                    </div>
                 </div>
 
             </div>
@@ -1082,16 +948,12 @@
         </section>
 
 
-        <!-- =====================================================
-             CERTIFICATIONS
-        ====================================================== -->
-
         <section id="certifications">
 
             <div class="mx-auto max-w-7xl px-4 py-28 sm:px-6 lg:px-8">
 
 
-                <div class="mb-16">
+                <div class="mb-16 reveal">
 
                     <p class="mb-4 font-mono text-xs tracking-[.3em] text-red-500">
                         04 / CERTIFICATIONS
@@ -1100,6 +962,7 @@
                     <h2 class="text-4xl font-black tracking-tight text-white sm:text-6xl">
 
                         Always
+
                         <span class="text-red-500">
                             learning.
                         </span>
@@ -1109,50 +972,66 @@
                 </div>
 
 
-                <div class="grid gap-4 md:grid-cols-3">
+                <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
 
-
-                    @foreach (var cert in new[]
+                    @foreach (var cert in Model.Certifications)
                     {
-                    new {
-                    Code = "AWS",
-                    Title = "DevOps Journey with AWS",
-                    Provider = "Digital Innovation One",
-                    Hours = "69 hours"
-                    },
-                    new {
-                    Code = "LNX",
-                    Title = "CompTIA Linux+ Complete Course",
-                    Provider = "Udemy",
-                    Hours = "21 hours"
-                    },
-                    new {
-                    Code = "VM",
-                    Title = "Mastering VMware PowerCLI",
-                    Provider = "Udemy",
-                    Hours = "6 hours"
-                    }
-                    })
-                    {
-                        <article class="group rounded-2xl border border-white/5 bg-black/20 p-6 transition duration-300 hover:-translate-y-1 hover:border-red-500/30 hover:bg-red-500/[.025]">
+                        <a href="@cert.Link" target="_blank"
+                           rel="noopener noreferrer"
+                           class="group reveal relative overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.02] p-6 transition-all duration-500 hover:-translate-y-1.5 hover:border-red-500/30 hover:bg-red-500/[0.03]">
 
-                            <div class="mb-8 flex h-12 w-12 items-center justify-center rounded-xl border border-red-500/10 bg-red-500/5 font-mono text-xs font-bold text-red-400">
-                                @cert.Code
+                            <div class="pointer-events-none absolute -right-16 -top-16 h-32 w-32 rounded-full bg-red-500/10 opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-100"></div>
+
+                            <div class="relative flex h-full flex-col">
+
+                                <div class="mb-6 flex items-start justify-between gap-4">
+
+                                    <span class="rounded-full border border-white/[0.06] bg-white/[0.03] px-2.5 py-1 font-mono text-[9px] uppercase tracking-widest text-slate-500">
+                                        Certification
+                                    </span>
+
+                                </div>
+
+                                <div class="relative">
+
+                                    <h3 class="text-base font-semibold leading-snug text-white transition-colors duration-300 group-hover:text-red-400">
+                                        @cert.CertificationName
+                                    </h3>
+
+                                    <p class="mt-2 text-sm leading-relaxed text-slate-400">
+                                        @cert.Contents
+                                    </p>
+
+                                </div>
+
+                                <div class="mt-auto pt-7">
+
+                                    <div class="mb-4 h-px bg-gradient-to-r from-white/[0.06] via-white/[0.03] to-transparent"></div>
+
+                                    <div class="flex items-center justify-between gap-4">
+
+                                        <div class="min-w-0">
+                                            <p class="truncate text-[10px] font-medium uppercase tracking-wider text-slate-600">
+                                                Issued by
+                                            </p>
+
+                                            <p class="mt-1 truncate text-xs text-slate-400">
+                                                @cert.Issuer
+                                            </p>
+                                        </div>
+
+                                        <span class="shrink-0 rounded-lg border border-red-500/10 bg-red-500/[0.04] px-2.5 py-1.5 font-mono text-[10px] text-red-400/80">
+                                            @cert.Workload Hours
+                                        </span>
+
+
+                                    </div>
+
+                                </div>
+
                             </div>
 
-                            <h3 class="font-semibold text-white">
-                                @cert.Title
-                            </h3>
-
-                            <p class="mt-2 text-sm text-slate-600">
-                                @cert.Provider
-                            </p>
-
-                            <p class="mt-4 font-mono text-[10px] text-slate-700">
-                                @cert.Hours
-                            </p>
-
-                        </article>
+                        </a>
                     }
 
                 </div>
@@ -1162,18 +1041,14 @@
         </section>
 
 
-        <!-- =====================================================
-             CONTACT
-        ====================================================== -->
-
         <section id="contact"
                  class="relative overflow-hidden border-t border-white/5">
 
 
-            <div class="absolute left-1/2 top-1/2 -z-10 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-red-600/10 blur-[130px]"></div>
+            <div class="absolute left-1/2 top-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-red-600/10 blur-[130px]"></div>
 
 
-            <div class="mx-auto max-w-4xl px-4 py-36 text-center sm:px-6 lg:px-8">
+            <div class="relative mx-auto max-w-4xl px-4 py-36 text-center sm:px-6 lg:px-8 reveal">
 
 
                 <p class="mb-5 font-mono text-xs tracking-[.3em] text-red-500">
@@ -1196,38 +1071,34 @@
                 </h2>
 
 
-                <p class="mx-auto mt-8 max-w-2xl text-lg leading-8 text-slate-500">
-
-                    I'm open to new professional opportunities,
-                    software development projects and interesting
-                    technical conversations.
-
-                </p>
-
-
                 <div class="mt-10 flex flex-wrap justify-center gap-4">
 
 
-                    <a href="mailto:thibalbinot@gmail.com"
-                       class="rounded-xl bg-red-600 px-7 py-3.5 font-semibold text-white shadow-lg shadow-red-950/30 transition hover:-translate-y-0.5 hover:bg-red-500">
+                    <a href="mailto:dev.thiagobalbinot@gmail.com"
+                       class="rounded-xl bg-red-600 px-7 py-3.5 font-semibold text-white shadow-lg shadow-red-950/30 transition hover:-translate-y-1 hover:bg-red-500">
 
                         Email me
+
                     </a>
 
 
-                    <a href="https://www.linkedin.com/in/thiago-wurster-balbinot-3b1932306/"
+                    <a href="https://www.linkedin.com/in/thiago-wurster-balbinot-3b1932306/?locale=en-US"
                        target="_blank"
-                       class="rounded-xl border border-slate-800 bg-black/30 px-7 py-3.5 font-semibold text-slate-300 transition hover:border-red-500/30 hover:text-red-400">
+                       rel="noopener noreferrer"
+                       class="rounded-xl border border-slate-800 bg-black/30 px-7 py-3.5 font-semibold text-slate-300 transition hover:-translate-y-1 hover:border-red-500/30 hover:text-red-400">
 
                         LinkedIn
+
                     </a>
 
 
                     <a href="https://github.com/ThiWB"
                        target="_blank"
-                       class="rounded-xl border border-slate-800 bg-black/30 px-7 py-3.5 font-semibold text-slate-300 transition hover:border-red-500/30 hover:text-red-400">
+                       rel="noopener noreferrer"
+                       class="rounded-xl border border-slate-800 bg-black/30 px-7 py-3.5 font-semibold text-slate-300 transition hover:-translate-y-1 hover:border-red-500/30 hover:text-red-400">
 
                         GitHub
+
                     </a>
 
                 </div>
@@ -1238,6 +1109,7 @@
 
     </main>
 
+
     <footer class="border-t border-white/5">
 
         <div class="mx-auto flex max-w-7xl flex-col gap-3 px-4 py-8 text-xs text-slate-700 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
@@ -1246,14 +1118,452 @@
                 © @DateTime.Now.Year Thiago Wurster Balbinot
             </p>
 
-            <p class="font-mono">
-                Built with .NET · C# · Tailwind
-            </p>
-
         </div>
 
     </footer>
 
+
+    <button id="back-to-top"
+            type="button"
+            aria-label="Back to top"
+            class="fixed bottom-6 right-6 z-40 hidden rounded-xl border border-red-500/20 bg-black/70 p-3 text-red-400 shadow-lg backdrop-blur-xl transition hover:-translate-y-1 hover:bg-red-500/10">
+
+        ↑
+
+    </button>
+
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", () => {
+
+
+            const progress =
+                document.getElementById("scroll-progress");
+
+            const backToTop =
+                document.getElementById("back-to-top");
+
+            const menuButton =
+                document.getElementById("menu-button");
+
+            const mobileMenu =
+                document.getElementById("mobile-menu");
+
+            const cursorGlow =
+                document.getElementById("cursor-glow");
+
+            function updateScrollProgress() {
+
+                const scrollTop =
+                    window.scrollY;
+
+                const scrollHeight =
+                    document.documentElement.scrollHeight -
+                    window.innerHeight;
+
+                const percentage =
+                    scrollHeight > 0
+                        ? (scrollTop / scrollHeight) * 100
+                        : 0;
+
+
+                progress.style.width =
+                    `${percentage}%`;
+
+
+                if (scrollTop > 600) {
+
+                    backToTop.classList.remove(
+                        "hidden"
+                    );
+
+                } else {
+
+                    backToTop.classList.add(
+                        "hidden"
+                    );
+
+                }
+
+            }
+
+
+            window.addEventListener(
+                "scroll",
+                updateScrollProgress,
+                {
+                    passive: true
+                }
+            );
+
+
+            updateScrollProgress();
+
+
+            backToTop.addEventListener(
+                "click",
+                () => {
+
+                    window.scrollTo({
+
+                        top: 0,
+
+                        behavior: "smooth"
+
+                    });
+
+                }
+            );
+
+
+
+            menuButton.addEventListener(
+                "click",
+                () => {
+
+                    const isOpen =
+                        !mobileMenu.classList.contains(
+                            "hidden"
+                        );
+
+
+                    mobileMenu.classList.toggle(
+                        "hidden"
+                    );
+
+
+                    menuButton.setAttribute(
+                        "aria-expanded",
+                        (!isOpen).toString()
+                    );
+
+                }
+            );
+
+
+            document
+                .querySelectorAll(".mobile-link")
+                .forEach(link => {
+
+                    link.addEventListener(
+                        "click",
+                        () => {
+
+                            mobileMenu.classList.add(
+                                "hidden"
+                            );
+
+                            menuButton.setAttribute(
+                                "aria-expanded",
+                                "false"
+                            );
+
+                        }
+                    );
+
+                });
+
+
+            const revealElements =
+                document.querySelectorAll(
+                    ".reveal"
+                );
+
+
+            const revealObserver =
+                new IntersectionObserver(
+                    entries => {
+
+                        entries.forEach(entry => {
+
+                            if (
+                                !entry.isIntersecting
+                            ) {
+
+                                return;
+
+                            }
+
+
+                            entry.target.classList.add(
+                                "visible"
+                            );
+
+
+                            revealObserver.unobserve(
+                                entry.target
+                            );
+
+                        });
+
+                    },
+                    {
+                        threshold: 0.12
+                    }
+                );
+
+
+            revealElements.forEach(
+                element => {
+
+                    revealObserver.observe(
+                        element
+                    );
+
+                }
+            );
+
+
+            const sections =
+                document.querySelectorAll(
+                    "main section[id]"
+                );
+
+            const navLinks =
+                document.querySelectorAll(
+                    ".nav-link"
+                );
+
+
+            const sectionObserver =
+                new IntersectionObserver(
+                    entries => {
+
+                        entries.forEach(entry => {
+
+                            if (
+                                !entry.isIntersecting
+                            ) {
+
+                                return;
+
+                            }
+
+
+                            navLinks.forEach(link => {
+
+                                link.classList.remove(
+                                    "active"
+                                );
+
+
+                                const href =
+                                    link.getAttribute(
+                                        "href"
+                                    );
+
+
+                                if (
+                                    href ===
+                                    `#${entry.target.id}`
+                                ) {
+
+                                    link.classList.add(
+                                        "active"
+                                    );
+
+                                }
+
+                            });
+
+                        });
+
+                    },
+                    {
+                        rootMargin:
+                            "-35% 0px -55% 0px"
+                    }
+                );
+
+
+            sections.forEach(
+                section => {
+
+                    sectionObserver.observe(
+                        section
+                    );
+
+                }
+            );
+
+
+            const finePointer =
+                window.matchMedia(
+                    "(pointer: fine)"
+                );
+
+
+            if (finePointer.matches) {
+
+                window.addEventListener(
+                    "mousemove",
+                    event => {
+
+                        cursorGlow.style.left =
+                            `${event.clientX}px`;
+
+                        cursorGlow.style.top =
+                            `${event.clientY}px`;
+
+                        cursorGlow.style.opacity =
+                            "1";
+
+                    },
+                    {
+                        passive: true
+                    }
+                );
+
+
+                document.addEventListener(
+                    "mouseleave",
+                    () => {
+
+                        cursorGlow.style.opacity =
+                            "0";
+
+                    }
+                );
+
+            }
+
+
+            const projectCards =
+                document.querySelectorAll(
+                    ".project-card"
+                );
+
+
+            projectCards.forEach(card => {
+
+                card.addEventListener(
+                    "mousemove",
+                    event => {
+
+                        const rect =
+                            card.getBoundingClientRect();
+
+
+                        const x =
+                            event.clientX -
+                            rect.left;
+
+
+                        const y =
+                            event.clientY -
+                            rect.top;
+
+
+                        const rotateX =
+                            ((y / rect.height) - 0.5) * -3;
+
+
+                        const rotateY =
+                            ((x / rect.width) - 0.5) * 3;
+
+
+                        card.style.transform =
+                            `perspective(1000px)
+                             rotateX(${rotateX}deg)
+                             rotateY(${rotateY}deg)
+                             translateY(-7px)`;
+
+                    }
+                );
+
+
+                card.addEventListener(
+                    "mouseleave",
+                    () => {
+
+                        card.style.transform =
+                            "";
+
+                    }
+                );
+
+            });
+
+
+            document
+                .querySelectorAll(".skill-tag")
+                .forEach((skill, index) => {
+
+                    skill.style.transitionDelay =
+                        `${index * 20}ms`;
+
+                });
+
+
+            document.addEventListener(
+                "keydown",
+                event => {
+
+                    if (
+                        event.key === "Escape"
+                    ) {
+
+                        mobileMenu.classList.add(
+                            "hidden"
+                        );
+
+                        menuButton.setAttribute(
+                            "aria-expanded",
+                            "false"
+                        );
+
+                    }
+
+                }
+            );
+
+        });
+
+                function openProjectModal(title, subtitle, image, id, description, link) {
+
+            const modal = document.getElementById('projectModal');
+
+            document.getElementById('modalProjectTitle').textContent = title;
+            document.getElementById('modalProjectSubtitle').textContent = subtitle;
+            document.getElementById('modalProjectDescription').textContent = description;
+
+            const imageElement = document.getElementById('modalProjectImage');
+
+            imageElement.src = image;
+            imageElement.alt = title;
+
+            document.getElementById('modalProjectDetails').href = link;
+
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+
+            document.body.classList.add('overflow-hidden');
+        }
+
+        function closeProjectModal(event) {
+
+            if (event && event.target !== event.currentTarget) {
+                return;
+            }
+
+            const modal = document.getElementById('projectModal');
+
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+
+            document.body.classList.remove('overflow-hidden');
+        }
+
+        document.addEventListener('keydown', function (event) {
+
+            if (event.key === 'Escape') {
+                closeProjectModal();
+            }
+
+        });
+
+    </script>
 
 </body>
 

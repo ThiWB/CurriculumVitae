@@ -7,7 +7,6 @@ using CurriculumVitae.Core.Domain.Entities;
 using CurriculumVitae.Core.Domain.RepositoryContracts;
 using CurriculumVitae.Infrastructure.Data;
 using Dapper;
-using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 
 namespace CurriculumVitae.Infrastructure.Repositories
 {
